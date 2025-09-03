@@ -1,0 +1,21 @@
+import { IconButton } from "@mui/material";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+
+// The toggle hook you created earlier
+import { useThemeMode } from "../hooks/useThemeMode";
+
+export default function ThemeToggle() {
+  const [mode, toggleMode] = useThemeMode();
+  const isDarkMode = mode === "dark";
+  return (
+    <IconButton
+      onClick={() => toggleMode()}
+      color="secondary"
+      aria-label={isDarkMode ? "toggle light mode" : "toggle dark mode"}
+      title={isDarkMode ? "Toggle to Light Mode" : "Toggle to Dark Mode"}
+    >
+      {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
+    </IconButton>
+  );
+}
