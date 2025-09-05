@@ -3,9 +3,9 @@ import About from "./routes/About";
 import Home from "./routes/Home";
 import NotFound from "./routes/NotFound";
 import Hobbies from "./routes/Hobbies";
-import Education from "./routes/Education";
 import App from "./App";
 import ErrorPage from "./components/ErrorPage";
+import Experience from "./routes/Experience";
 
 export const browserRouter = createBrowserRouter([
   {
@@ -18,9 +18,7 @@ export const browserRouter = createBrowserRouter([
         element: <Home />,
       },
       { path: "about", element: <About /> },
-      { path: "education", element: <Education /> },
-      { path: "hobbies", element: <Hobbies /> },
-      { path: "education", element: <Education /> },
+      { path: "experience", element: <Experience /> },
       { path: "hobbies", element: <Hobbies /> },
       { path: "*", element: <NotFound /> },
     ],

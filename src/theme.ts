@@ -40,14 +40,14 @@ export const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#01344D", // Dark Blue
+      main: "#01344D",
     },
     secondary: {
-      main: "#9CCE4D", // Lime Green
+      main: "#ffffff",
     },
     background: {
-      default: "#FFFFFF",
-      paper: "#FFFFFF",
+      default: "#9CCE4D",
+      paper: "#9CCE4D",
     },
     text: {
       primary: "#01344D",
@@ -59,13 +59,12 @@ export const lightTheme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: "#FFFFFF",
+          backgroundColor: "#9CCE4D",
           color: "#01344D",
           boxShadow: "none",
-          borderBottom: "1px solid #E0E0E0",
-          backgroundImage: "none", // Override the Paper overlay
+          backgroundImage: "none",
+          transition: "background-color 0.5s ease, color 0.5s ease",
           "& *": {
-            // Target all children of the AppBar
             color: "#01344D",
           },
         },
@@ -79,14 +78,14 @@ export const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#FFFFFF", // White
+      main: "#FFFFFF",
     },
     secondary: {
-      main: "#9CCE4D", // Lime Green
+      main: "#9CCE4D",
     },
     background: {
-      default: "#01344D", // Dark Blue
-      paper: "#01344D", // Dark Blue for Cards, etc.
+      default: "#01344D",
+      paper: "#01344D",
     },
   },
   typography,
@@ -97,8 +96,8 @@ export const darkTheme = createTheme({
           backgroundColor: "#01344D",
           color: "#FFFFFF",
           boxShadow: "none",
-          borderBottom: "1px solid #3A4A5A",
-          backgroundImage: "none", // Override the Paper overlay
+          backgroundImage: "none",
+          transition: "background-color 0.5s ease, color 0.5s ease",
         },
       },
     },
