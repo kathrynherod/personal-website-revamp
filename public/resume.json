@@ -1,0 +1,124 @@
+{
+  "name": "Kathryn Herod",
+  "location": "Katy, TX 77494",
+  "phone": "281-989-4865",
+  "email": "kathryn.herod@gmail.com",
+  "linkedin": "linkedin.com/in/kathrynherod",
+  "github": "github.com/kathrynherod",
+  "website": "kathrynherod.com",
+  "summary": "Full-stack software engineer with 7+ years of experience building scalable applications using C# and modern frontend frameworks. Proven track record of modernizing legacy systems, implementing test-driven development practices, and leading cross-functional teams. Strong background in technical execution and business strategy.",
+  "skills": {
+    "backend": [
+      "C#",
+      "ASP.NET",
+      "SQL",
+      "REST APIs",
+      "Node.js"
+    ],
+    "frontend": [
+      "TypeScript",
+      "JavaScript",
+      "Angular",
+      "React",
+      "HTML5",
+      "CSS3",
+      "SASS"
+    ],
+    "tools": [
+      "Azure DevOps",
+      "Git",
+      "Bootstrap",
+      "Redux"
+    ],
+    "methodologies": [
+      "Agile",
+      "Scrum",
+      "Test Driven Development"
+    ]
+  },
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "[Company Name]",
+      "period": "2023 - Present",
+      "location": "Remote",
+      "achievements": [
+        "Architected scalable back-end services using C# and ASP.NET, improving system performance",
+        "Built responsive frontend applications with TypeScript, React, and Angular",
+        "Drove technical decisions throughout the full software development lifecycle"
+      ]
+    },
+    {
+      "title": "Front End Developer",
+      "company": "Identity Automation",
+      "period": "2020 - 2022",
+      "location": "Remote",
+      "achievements": [
+        "Spearheaded frontend modernization initiatives, increasing team delivery velocity",
+        "Established test-driven development standards, reducing production bugs",
+        "Integrated multiple backend APIs to expand application functionality"
+      ]
+    },
+    {
+      "title": "Front End Developer",
+      "company": "O'Reilly Auto Parts",
+      "period": "2020",
+      "location": "Remote",
+      "achievements": [
+        "Designed comprehensive design system for retail point-of-sale applications",
+        "Developed reusable JavaFX components, accelerating development cycles"
+      ]
+    },
+    {
+      "title": "Front End Developer & Scrum Master",
+      "company": "Identity Automation",
+      "period": "2018 - 2020",
+      "location": "Houston, TX",
+      "achievements": [
+        "Led frontend development while serving as Scrum Master for cross-functional teams",
+        "Implemented Scrum methodologies that improved project delivery timelines",
+        "Mentored developers on best practices and facilitated sprint planning"
+      ]
+    },
+    {
+      "title": "Software Engineer Senior Analyst",
+      "company": "Accenture",
+      "period": "2017 - 2018",
+      "location": "Houston, TX",
+      "achievements": [
+        "Developed responsive single-page applications using Angular and React",
+        "Created interactive mockups for enterprise software redesigns",
+        "Facilitated design thinking workshops with stakeholders"
+      ]
+    },
+    {
+      "title": "Entrepreneur & Pastry Chef",
+      "company": "Well Done Cooking Classes",
+      "period": "2009 - 2018",
+      "location": "Houston, TX",
+      "achievements": [
+        "Founded and scaled cooking education business to $600,000 annual revenue before acquisition",
+        "Managed full-stack web development and secure e-commerce integration",
+        "Led teams of up to 40 people during high-volume events"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "The University of Texas at Austin",
+      "degree": "Full Stack Developer Certification",
+      "year": "2017"
+    },
+    {
+      "school": "The University of Texas at Austin",
+      "degree": "Bachelor of Arts",
+      "year": "2005 - 2007"
+    }
+  ],
+  "certifications": [
+    "Certified Scrum Master (CSM)",
+    "Team Leadership",
+    "UX/UI Design",
+    "SEO"
+  ]
+}
