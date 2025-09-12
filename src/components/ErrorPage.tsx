@@ -1,29 +1,42 @@
-import { isRouteErrorResponse,useRouteError } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
 export default function ErrorPage() {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
     return (
-      <div>
-        <h1>Oops!</h1>
-        <p>Sorry, an unexpected error has occurred.</p>
-        <p>
-          <i>{error.statusText}</i>
-        </p>
-      </div>
+      <Box sx={{ textAlign: "center", mt: 4 }}>
+        <Typography variant="h1" gutterBottom>
+          Oops!
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          Sorry, an unexpected error has occurred.
+        </Typography>
+        <Typography variant="body2" sx={{ fontStyle: "italic" }}>
+          {error.statusText}
+        </Typography>
+      </Box>
     );
   } else if (error instanceof Error) {
     return (
-      <div>
-        <h1>Oops!</h1>
-        <p>Sorry, an unexpected error has occurred.</p>
-        <p>
-          <i>{error.message}</i>
-        </p>
-      </div>
+      <Box sx={{ textAlign: "center", mt: 4 }}>
+        <Typography variant="h1" gutterBottom>
+          Oops!
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          Sorry, an unexpected error has occurred.
+        </Typography>
+        <Typography variant="body2" sx={{ fontStyle: "italic" }}>
+          {error.message}
+        </Typography>
+      </Box>
     );
   } else {
-    return <h1>Oops! Unknown Error</h1>;
+    return (
+      <Box sx={{ textAlign: "center", mt: 4 }}>
+        <Typography variant="h1">Oops! Unknown Error</Typography>
+      </Box>
+    );
   }
 }

@@ -8,8 +8,10 @@ const AboutContainer = styled("div")`
   flex-direction: column;
   flex-grow: 1;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
+  padding: ${({ theme }) => theme.spacing(4, 2)};
+  background-color: ${({ theme }) => theme.palette.background.paper};
 `;
 
 const ContentAndImageWrapper = styled(Box)`
@@ -17,34 +19,39 @@ const ContentAndImageWrapper = styled(Box)`
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  padding: 2rem;
+  max-width: 1200px;
+  width: 100%;
 
-  @media (min-width: 900px) {
+  ${({ theme }) => theme.breakpoints.up("md")} {
     flex-direction: row;
     align-items: flex-start;
   }
 `;
 
 const TextContentWrapper = styled(Box)`
+  flex: 1;
   max-width: 700px;
 `;
 
 const SelfImage = styled("img")`
-  width: 250px;
-  height: 100%;
+  width: 300px;
+  height: 400px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: ${({ theme }) =>
+    theme.palette.mode === "light"
+      ? "0px 10px 30px rgba(1, 52, 77, 0.15)"
+      : "0px 10px 30px rgba(0, 0, 0, 0.3)"};
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 250px;
+    height: 350px;
+  }
 `;
 
 export default function About() {
   return (
-    <AboutContainer
-      id="about"
-      sx={{
-        backgroundColor: "white",
-        color: "black",
-      }}
-    >
+    <AboutContainer id="about">
       <ContentAndImageWrapper>
         <TextContentWrapper>
           {/* <Blockquote author="Michael Feathers">
@@ -52,8 +59,9 @@ export default function About() {
               are tests for it. If there aren’t, write them. When you do this
               consistently, you use tests as a medium of communication."
             </Blockquote> */}
-          <Stack spacing={2}>
-            <Typography>
+
+          <Stack spacing={3}>
+            <Typography variant="body1">
               I'm a full-stack software engineer with over seven years of
               experience crafting scalable applications that solve real-world
               problems. My journey into tech began unconventionally, as I spent
@@ -61,7 +69,8 @@ export default function About() {
               education business from nothing to over $600k in annual revenue
               before its acquisition.
             </Typography>
-            <Typography>
+
+            <Typography variant="body1">
               This entrepreneurial background gives me a unique perspective in
               software development. I understand how technology decisions impact
               business outcomes, user experience, and long-term growth. Whether
@@ -69,13 +78,15 @@ export default function About() {
               responsive frontend applications with React and Angular, I always
               try to keep the end user in mind.
             </Typography>
-            <Typography>
+
+            <Typography variant="body1">
               What really motivates me is building technology that makes a
               difference in people's lives. While I love solving complex
               technical problems, what I really enjoy is knowing that my work
               helps make someone else's day easier.
             </Typography>
-            <Typography>
+
+            <Typography variant="body1">
               When I'm not at the computer, I'm busy being a mom to my son and
               wrangling my two German Shepherd rescues. I also love woodworking!
               Right now it's building furniture and doing trim carpentry around
@@ -87,25 +98,11 @@ export default function About() {
             </Typography>
           </Stack>
         </TextContentWrapper>
-        <SelfImage src={KathrynAndOlive} alt="Kathryn and Olive" />
-        {/* <Paper
-          elevation={8}
-          sx={{
-            borderRadius:
-              "12px" / * Adjust this for rounded corners on the frame * /,
-            width: 300, // Example width
-            height: 400, // Example height for a portrait-like rectangle
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden",
-            p: 1.5,
-            bgcolor: "background.paper",
-            boxShadow: "0px 10px 15px rgba(0, 0, 0, 0.2)",
-          }}
-        >
-          <SelfImage src={KathrynAndOlive} alt="Kathryn and Olive" />
-        </Paper> */}
+
+        <SelfImage
+          src={KathrynAndOlive}
+          alt="Kathryn Herod with her German Shepherd Olive"
+        />
       </ContentAndImageWrapper>
     </AboutContainer>
   );

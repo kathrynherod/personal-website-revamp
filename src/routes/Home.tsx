@@ -5,13 +5,24 @@ const JumboH1Container = styled(Stack)`
   flex-grow: 1;
   justify-content: center;
   height: calc(100vh - ${({ theme }) => theme.mixins.toolbar.minHeight}px);
+  padding: ${({ theme }) => theme.spacing(2)};
 `;
+
 const JumboH1 = styled(Typography)`
   font-size: 4rem;
+  line-height: 1;
 
   ${({ theme }) => theme.breakpoints.up("sm")} {
     font-size: 6rem;
   }
+
+  ${({ theme }) => theme.breakpoints.up("lg")} {
+    font-size: 8rem;
+  }
+`;
+
+const SubtitleText = styled(Typography)`
+  margin-top: ${({ theme }) => theme.spacing(2)};
 `;
 
 export default function Home() {
@@ -23,9 +34,9 @@ export default function Home() {
           <br />
           herod
         </JumboH1>
-        <Typography variant="h2" color="secondary">
+        <SubtitleText variant="h2" color="secondary">
           Software Engineer
-        </Typography>
+        </SubtitleText>
       </div>
     </JumboH1Container>
   );

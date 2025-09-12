@@ -1,7 +1,23 @@
 import { createTheme } from "@mui/material/styles";
 
 const darkBlue = "#01344D";
-const lightGreen = "#9CCE4D";
+const limeGreen = "#9CCE4D";
+
+declare module "@mui/material/styles" {
+  interface Palette {
+    brand: {
+      darkBlue: string;
+      limeGreen: string;
+    };
+  }
+
+  interface PaletteOptions {
+    brand?: {
+      darkBlue?: string;
+      limeGreen?: string;
+    };
+  }
+}
 
 const typography = {
   fontFamily: "Poppins, Arial, sans-serif",
@@ -10,58 +26,90 @@ const typography = {
   h1: {
     fontSize: "4rem",
     fontWeight: 800,
+    lineHeight: 1.2,
+    "@media (min-width:600px)": {
+      fontSize: "6rem",
+    },
   },
   h2: {
     fontSize: "2rem",
     fontWeight: 800,
+    lineHeight: 1.3,
   },
   h3: {
     fontSize: "1.75rem",
     fontWeight: 800,
+    lineHeight: 1.3,
   },
   h4: {
     fontSize: "1.5rem",
     fontWeight: 800,
+    lineHeight: 1.4,
   },
   h5: {
     fontSize: "1.25rem",
     fontWeight: 800,
+    lineHeight: 1.4,
   },
   h6: {
     fontSize: "1.125rem",
     fontWeight: 800,
+    lineHeight: 1.4,
   },
   body1: {
     fontSize: "1rem",
     fontWeight: 400,
+    lineHeight: 1.875,
+  },
+  body2: {
+    fontSize: "0.875rem",
+    fontWeight: 400,
+    lineHeight: 1.75,
   },
 };
 
-// Create the light theme
+const baseTheme = {
+  typography,
+  spacing: 8,
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
+};
+
 export const lightTheme = createTheme({
+  ...baseTheme,
   palette: {
-    mode: "light",
+    mode: "light" as const,
     primary: {
       main: darkBlue,
     },
     secondary: {
-      main: "#ffffff",
+      main: limeGreen,
     },
     background: {
-      default: lightGreen,
-      paper: lightGreen,
+      default: limeGreen,
+      paper: "#ffffff",
     },
     text: {
       primary: darkBlue,
       secondary: darkBlue,
     },
+    brand: {
+      darkBlue,
+      limeGreen,
+    },
   },
-  typography,
   components: {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: lightGreen,
+          backgroundColor: limeGreen,
           color: darkBlue,
           boxShadow: "none",
           backgroundImage: "none",
@@ -72,34 +120,73 @@ export const lightTheme = createTheme({
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          fontWeight: 600,
+          borderRadius: "8px",
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundImage: "none",
+        },
+      },
+    },
   },
 });
 
-// Create the dark theme
 export const darkTheme = createTheme({
+  ...baseTheme,
   palette: {
-    mode: "dark",
+    mode: "dark" as const,
     primary: {
-      main: "#FFFFFF",
+      main: "#ffffff",
     },
     secondary: {
-      main: "#9CCE4D",
+      main: limeGreen,
     },
     background: {
       default: darkBlue,
       paper: darkBlue,
     },
+    text: {
+      primary: "#ffffff",
+      secondary: "#ffffff",
+    },
+    brand: {
+      darkBlue,
+      limeGreen,
+    },
   },
-  typography,
   components: {
     MuiAppBar: {
       styleOverrides: {
         root: {
           backgroundColor: darkBlue,
-          color: "#FFFFFF",
+          color: "#ffffff",
           boxShadow: "none",
           backgroundImage: "none",
           transition: "background-color 0.5s ease, color 0.5s ease",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          fontWeight: 600,
+          borderRadius: "8px",
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundImage: "none",
         },
       },
     },

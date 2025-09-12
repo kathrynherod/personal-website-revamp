@@ -1,13 +1,5 @@
-import {
-  Box,
-  CssBaseline,
-  styled,
-  ThemeProvider,
-  // Typography,
-  useTheme,
-} from "@mui/material";
-import { type ReactNode, useEffect, useRef } from "react";
-import React from "react";
+import { CssBaseline, styled, ThemeProvider } from "@mui/material";
+import React, { type ReactNode, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -22,20 +14,10 @@ import { darkTheme, lightTheme } from "./theme";
 const AppContainer = styled("div")`
   background-color: ${(props) => props.theme.palette.background.default};
   color: ${(props) => props.theme.palette.text.primary};
-  /* display: flex;
-  flex-direction: column; */
   min-height: 100vh;
   transition:
     background-color 0.5s ease,
     color 0.5s ease;
-  /* overflow: auto; */
-`;
-
-const ContentContainer = styled("main")`
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  min-height: calc(100vh - ${({ theme }) => theme.mixins.toolbar.minHeight}px);
 `;
 
 type AppSection = {
@@ -76,22 +58,31 @@ export default function App() {
   const [themeMode] = useThemeMode();
   const location = useLocation();
   const navigate = useNavigate();
-  const theme = useTheme();
 
   const isScrollingRef = useRef(false);
-  const appContainerRef = useRef<HTMLDivElement | null>(null);
   const homeRef = useRef<HTMLDivElement | null>(null);
   const aboutRef = useRef<HTMLDivElement | null>(null);
+  const experienceRef = useRef<HTMLDivElement | null>(null);
+  const hobbiesRef = useRef<HTMLDivElement | null>(null);
+
   const isHomeVisible = useIntersectionObserver(homeRef, {
     rootMargin: "-45% 0px -45% 0px",
   });
   const isAboutVisible = useIntersectionObserver(aboutRef, {
     rootMargin: "-45% 0px -45% 0px",
   });
+  const isExperienceVisible = useIntersectionObserver(experienceRef, {
+    rootMargin: "-45% 0px -45% 0px",
+  });
+  const isHobbiesVisible = useIntersectionObserver(hobbiesRef, {
+    rootMargin: "-45% 0px -45% 0px",
+  });
 
   useEffect(() => {
     const homeSection = document.getElementById("home");
     const aboutSection = document.getElementById("about");
+    const experienceSection = document.getElementById("experience");
+    const hobbiesSection = document.getElementById("hobbies");
 
     if (homeSection instanceof HTMLDivElement) {
       homeRef.current = homeSection;
@@ -99,10 +90,20 @@ export default function App() {
     if (aboutSection instanceof HTMLDivElement) {
       aboutRef.current = aboutSection;
     }
+    if (experienceSection instanceof HTMLDivElement) {
+      experienceRef.current = experienceSection;
+    }
+    if (hobbiesSection instanceof HTMLDivElement) {
+      hobbiesRef.current = hobbiesSection;
+    }
   });
 
   useEffect(() => {
     const currentPath = window.location.pathname;
+
+    if (isScrollingRef.current) {
+      return;
+    }
 
     if (isHomeVisible && currentPath !== "/") {
       isScrollingRef.current = true;
@@ -110,50 +111,37 @@ export default function App() {
     } else if (isAboutVisible && currentPath !== "/about") {
       isScrollingRef.current = true;
       navigate("/about", { replace: true });
+    } else if (isExperienceVisible && currentPath !== "/experience") {
+      isScrollingRef.current = true;
+      navigate("/experience", { replace: true });
+    } else if (isHobbiesVisible && currentPath !== "/hobbies") {
+      isScrollingRef.current = true;
+      navigate("/hobbies", { replace: true });
     }
-    // Add more conditions for other sections here
-  }, [isHomeVisible, isAboutVisible, navigate]); // Keep the dependencies for visibility states
 
-  useEffect(() => {
+    // Reset the scrolling flag after a short delay
     if (isScrollingRef.current) {
-      isScrollingRef.current = false; // Reset the flag
-      return;
+      const timer = setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 100);
+      return () => clearTimeout(timer);
     }
-
-    // const scrollToSection = (path: string) => {
-    //   const sectionId = path.substring(1) || "home";
-    //   const sectionElement = document.getElementById(sectionId);
-
-    //   // Get the dynamic navbar height with a fallback
-    //   const navbarHeight =
-    //     parseFloat(theme.mixins.toolbar.minHeight as string) || 64;
-
-    //   if (sectionElement && appContainerRef.current) {
-    //     // 💡 Calculate the correct top position by subtracting the navbar's height
-    //     const topPosition = sectionElement.offsetTop - navbarHeight;
-
-    //     // 💡 Scroll the container ref, not the window
-    //     appContainerRef.current.scrollTo({
-    //       top: topPosition,
-    //       behavior: "smooth",
-    //     });
-    //   }
-    // };
-
-    // // Only call the function when the path changes
-    // scrollToSection(location.pathname);
-  }, [location, theme]); // Dependencies ensure the effect runs on route changes
+  }, [
+    isHomeVisible,
+    isAboutVisible,
+    isExperienceVisible,
+    isHobbiesVisible,
+    navigate,
+  ]);
 
   return (
     <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
       <CssBaseline />
-      <AppContainer ref={appContainerRef}>
+      <AppContainer>
         <Navbar />
-        {/* <ContentContainer> */}
         {sections.map((section) => (
           <React.Fragment key={section.id}>{section.element}</React.Fragment>
         ))}
-        {/* </ContentContainer> */}
       </AppContainer>
     </ThemeProvider>
   );

@@ -7,12 +7,14 @@ const BlockquoteContainer = styled(Paper)`
   font-style: italic;
   margin: ${({ theme }) => theme.spacing(2)};
   padding: ${({ theme }) => theme.spacing(2)};
+  background-color: ${({ theme }) => theme.palette.background.paper};
 `;
 
 type BlockquoteProps = {
   children: React.ReactNode;
   author?: string;
 };
+
 export default function Blockquote(props: BlockquoteProps) {
   const { children, author } = props;
 

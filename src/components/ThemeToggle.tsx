@@ -7,11 +7,12 @@ import { useThemeMode } from "../hooks/useThemeMode";
 export default function ThemeToggle() {
   const [mode, toggleMode] = useThemeMode();
   const isDarkMode = mode === "dark";
+
   return (
     <IconButton
       onClick={() => toggleMode()}
       color="secondary"
-      aria-label={isDarkMode ? "toggle light mode" : "toggle dark mode"}
+      aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
       title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
     >
       {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
