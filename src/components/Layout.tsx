@@ -1,17 +1,18 @@
 import {
-  ThemeProvider,
-  CssBaseline,
-  Button,
-  Box,
   AppBar,
+  Box,
+  Button,
+  Container,
+  CssBaseline,
+  Link as MuiLink,
+  ThemeProvider,
   Toolbar,
   Typography,
-  Container,
-  Link as MuiLink,
 } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
-import { lightTheme, darkTheme } from "../theme";
+
 import { useThemeMode } from "../hooks/useThemeMode";
+import { darkTheme,lightTheme } from "../theme";
 
 const NavLink = ({
   to,

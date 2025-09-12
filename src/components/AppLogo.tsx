@@ -1,7 +1,8 @@
 import { styled, useTheme } from "@mui/material/styles";
-import lightLogo from "../assets/images/logo-light.svg";
-import darkLogo from "../assets/images/logo-dark.svg";
 import { Link } from "react-router-dom";
+
+import darkLogo from "../assets/images/logo-dark.svg";
+import lightLogo from "../assets/images/logo-light.svg";
 
 const StyledLogo = styled("img")`
   width: 50px;

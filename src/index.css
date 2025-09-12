@@ -29,16 +29,17 @@ input[type="checkbox"] {
 
 a {
   color: inherit;
-  padding: 16px;
+  padding: 0.5rem 0.25rem;
+  margin: 0.5rem 0.75rem;
   text-decoration: none;
 
   &.active {
-    font-weight: 600;
-    text-decoration: underline;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.5rem;
   }
 
   &:hover {
-    text-decoration: underline;
+    border-bottom: 1px solid currentColor;
   }
 }
 

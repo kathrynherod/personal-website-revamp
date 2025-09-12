@@ -1,9 +1,4 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import AppLogo from "./AppLogo";
-import ThemeToggle from "./ThemeToggle";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   Divider,
   IconButton,
@@ -13,9 +8,15 @@ import {
   styled,
   Typography,
 } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import * as React from "react";
 import { NavLink } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import type { NavbarPage } from "../types/NavbarPage";
+import AppLogo from "./AppLogo";
+import ThemeToggle from "./ThemeToggle";
 
 const pages: NavbarPage[] = [
   { display: "About", route: "/about" },
@@ -54,7 +55,7 @@ const CustomMenuItemDivider = styled(Divider)`
 
 export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
+    null,
   );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {

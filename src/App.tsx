@@ -1,22 +1,23 @@
 import {
-  ThemeProvider,
-  CssBaseline,
   Box,
+  CssBaseline,
   styled,
-  Typography,
+  ThemeProvider,
+  // Typography,
   useTheme,
 } from "@mui/material";
+import { type ReactNode, useEffect, useRef } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { lightTheme, darkTheme } from "./theme";
-import { useThemeMode } from "./hooks/useThemeMode";
+
 import Navbar from "./components/Navbar";
-import { useEffect, useRef, type ReactNode } from "react";
-import Home from "./routes/Home";
+import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
+import { useThemeMode } from "./hooks/useThemeMode";
 import About from "./routes/About";
 import Experience from "./routes/Experience";
 import Hobbies from "./routes/Hobbies";
-import React from "react";
-import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
+import Home from "./routes/Home";
+import { darkTheme, lightTheme } from "./theme";
 
 const AppContainer = styled(Box)`
   background-color: ${(props) => props.theme.palette.background.default};
@@ -37,32 +38,11 @@ const ContentContainer = styled("main")`
   min-height: calc(100vh - ${({ theme }) => theme.mixins.toolbar.minHeight}px);
 `;
 
-const AboutTab = styled(Box)`
-  background-color: ${(props) => props.theme.palette.background.paper};
-  border-radius: 0 0 2px 2px;
-  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
-  color: ${(props) => props.theme.palette.text.primary};
-  cursor: pointer;
-  left: 0;
-  padding: 0.5rem 2rem;
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: 0 0;
-  transition: all 0.3s ease-in-out;
-  z-index: 1000;
-
-  &:hover {
-    transform: translateY(-50%) rotate(-90deg) scale(1.05);
-    z-index: 1001;
-  }
-`;
-
 type AppSection = {
-  path: string;
-  name: string;
-  id: string;
   element: ReactNode;
+  id: string;
+  name: string;
+  path: string;
 };
 
 const sections: AppSection[] = [
@@ -106,33 +86,6 @@ export default function App() {
     }
   });
 
-  // // New useEffect to update the URL based on visibility
-  // useEffect(() => {
-  //   // You can also use location.pathname to avoid infinite loops if it's already on the path
-  //   const currentPath = window.location.pathname;
-  //   if (isHomeVisible && currentPath !== "/") {
-  //     navigate("/", { replace: true });
-  //   } else if (isAboutVisible && currentPath !== "/about") {
-  //     navigate("/about", { replace: true });
-  //   }
-  //   // Add more conditions for other sections
-  // }, [isAboutVisible, isHomeVisible, navigate]);
-
-  // old scroll to section effect
-  // useEffect(() => {
-  //   const scrollToSection = (path: string) => {
-  //     const sectionId = path.substring(1) || "home";
-  //     const sectionElement = document.getElementById(sectionId);
-
-  //     if (sectionElement) {
-  //       sectionElement.scrollIntoView({ behavior: "smooth" });
-  //     }
-  //   };
-
-  //   scrollToSection(location.pathname);
-  // }, [location]);
-
-  // 💡 This is the correct useEffect for smooth URL updates
   useEffect(() => {
     const currentPath = window.location.pathname;
 
@@ -182,11 +135,6 @@ export default function App() {
       <AppContainer ref={appContainerRef}>
         <Navbar />
         <ContentContainer>
-          {isAboutVisible && (
-            <AboutTab>
-              <Typography variant="h6">About</Typography>
-            </AboutTab>
-          )}
           {sections.map((section) => (
             <React.Fragment key={section.id}>{section.element}</React.Fragment>
           ))}

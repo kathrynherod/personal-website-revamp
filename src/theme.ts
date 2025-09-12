@@ -1,36 +1,38 @@
 import { createTheme } from "@mui/material/styles";
 
-// Define the typography for both themes
+const darkBlue = "#01344D";
+const lightGreen = "#9CCE4D";
+
 const typography = {
   fontFamily: "Poppins, Arial, sans-serif",
   fontWeightRegular: 400,
   fontWeightBold: 800,
   h1: {
-    fontSize: "64px",
+    fontSize: "4rem",
     fontWeight: 800,
   },
   h2: {
-    fontSize: "32px",
+    fontSize: "2rem",
     fontWeight: 800,
   },
   h3: {
-    fontSize: "28px",
+    fontSize: "1.75rem",
     fontWeight: 800,
   },
   h4: {
-    fontSize: "24px",
+    fontSize: "1.5rem",
     fontWeight: 800,
   },
   h5: {
-    fontSize: "20px",
+    fontSize: "1.25rem",
     fontWeight: 800,
   },
   h6: {
-    fontSize: "18px",
+    fontSize: "1.125rem",
     fontWeight: 800,
   },
   body1: {
-    fontSize: "16px",
+    fontSize: "1rem",
     fontWeight: 400,
   },
 };
@@ -40,18 +42,18 @@ export const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#01344D",
+      main: darkBlue,
     },
     secondary: {
       main: "#ffffff",
     },
     background: {
-      default: "#9CCE4D",
-      paper: "#9CCE4D",
+      default: lightGreen,
+      paper: lightGreen,
     },
     text: {
-      primary: "#01344D",
-      secondary: "#01344D",
+      primary: darkBlue,
+      secondary: darkBlue,
     },
   },
   typography,
@@ -59,13 +61,13 @@ export const lightTheme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: "#9CCE4D",
-          color: "#01344D",
+          backgroundColor: lightGreen,
+          color: darkBlue,
           boxShadow: "none",
           backgroundImage: "none",
           transition: "background-color 0.5s ease, color 0.5s ease",
           "& *": {
-            color: "#01344D",
+            color: darkBlue,
           },
         },
       },
@@ -84,8 +86,8 @@ export const darkTheme = createTheme({
       main: "#9CCE4D",
     },
     background: {
-      default: "#01344D",
-      paper: "#01344D",
+      default: darkBlue,
+      paper: darkBlue,
     },
   },
   typography,
@@ -93,7 +95,7 @@ export const darkTheme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: "#01344D",
+          backgroundColor: darkBlue,
           color: "#FFFFFF",
           boxShadow: "none",
           backgroundImage: "none",

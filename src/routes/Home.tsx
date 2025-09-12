@@ -4,7 +4,7 @@ const JumboH1Container = styled(Stack)`
   align-items: center;
   flex-grow: 1;
   justify-content: center;
-  min-height: 100vh;
+  min-height: calc(100vh - ${({ theme }) => theme.mixins.toolbar.minHeight}px);
 `;
 const JumboH1 = styled(Typography)`
   font-size: 4rem;
@@ -17,11 +17,16 @@ const JumboH1 = styled(Typography)`
 export default function Home() {
   return (
     <JumboH1Container id="home">
-      <JumboH1 variant="h1" gutterBottom>
-        kathryn
-        <br />
-        herod
-      </JumboH1>
+      <div>
+        <JumboH1 variant="h1" gutterBottom>
+          kathryn
+          <br />
+          herod
+        </JumboH1>
+        <Typography variant="h2" color="secondary">
+          Software Engineer
+        </Typography>
+      </div>
     </JumboH1Container>
   );
 }

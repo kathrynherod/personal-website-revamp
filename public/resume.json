@@ -8,13 +8,7 @@
   "website": "kathrynherod.com",
   "summary": "Full-stack software engineer with 7+ years of experience building scalable applications using C# and modern frontend frameworks. Proven track record of modernizing legacy systems, implementing test-driven development practices, and leading cross-functional teams. Strong background in technical execution and business strategy.",
   "skills": {
-    "backend": [
-      "C#",
-      "ASP.NET",
-      "SQL",
-      "REST APIs",
-      "Node.js"
-    ],
+    "backend": ["C#", "ASP.NET", "SQL", "REST APIs", "Node.js"],
     "frontend": [
       "TypeScript",
       "JavaScript",
@@ -24,17 +18,8 @@
       "CSS3",
       "SASS"
     ],
-    "tools": [
-      "Azure DevOps",
-      "Git",
-      "Bootstrap",
-      "Redux"
-    ],
-    "methodologies": [
-      "Agile",
-      "Scrum",
-      "Test Driven Development"
-    ]
+    "tools": ["Azure DevOps", "Git", "Bootstrap", "Redux"],
+    "methodologies": ["Agile", "Scrum", "Test Driven Development"]
   },
   "experience": [
     {

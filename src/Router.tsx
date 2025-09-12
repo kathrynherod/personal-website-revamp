@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import About from "./routes/About";
-import Home from "./routes/Home";
-import NotFound from "./routes/NotFound";
-import Hobbies from "./routes/Hobbies";
+
 import App from "./App";
 import ErrorPage from "./components/ErrorPage";
+import About from "./routes/About";
 import Experience from "./routes/Experience";
+import Hobbies from "./routes/Hobbies";
+import Home from "./routes/Home";
+import NotFound from "./routes/NotFound";
 
 export const browserRouter = createBrowserRouter([
   {

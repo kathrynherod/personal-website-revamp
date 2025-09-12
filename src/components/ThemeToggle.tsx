@@ -1,8 +1,7 @@
-import { IconButton } from "@mui/material";
-import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import { IconButton } from "@mui/material";
 
-// The toggle hook you created earlier
 import { useThemeMode } from "../hooks/useThemeMode";
 
 export default function ThemeToggle() {

@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState, type ReactNode } from "react";
-import { ThemeModeContext } from "../contexts/ThemeModeContext";
 import type { PaletteMode } from "@mui/material";
+import { type ReactNode,useCallback, useEffect, useState } from "react";
+
+import { ThemeModeContext } from "../contexts/ThemeModeContext";
 
 export const ThemeModeProvider = ({ children }: { children: ReactNode }) => {
   const [themeMode, setThemeMode] = useState<PaletteMode>(() => {
