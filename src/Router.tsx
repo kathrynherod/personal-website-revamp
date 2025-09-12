@@ -18,10 +18,22 @@ export const browserRouter = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-      { path: "about", element: <About /> },
-      { path: "experience", element: <Experience /> },
-      { path: "hobbies", element: <Hobbies /> },
-      { path: "*", element: <NotFound /> },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "experience",
+        element: <Experience />,
+      },
+      {
+        path: "hobbies",
+        element: <Hobbies />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
     ],
   },
 ]);

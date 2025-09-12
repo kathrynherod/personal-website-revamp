@@ -19,16 +19,16 @@ import Hobbies from "./routes/Hobbies";
 import Home from "./routes/Home";
 import { darkTheme, lightTheme } from "./theme";
 
-const AppContainer = styled(Box)`
+const AppContainer = styled("div")`
   background-color: ${(props) => props.theme.palette.background.default};
   color: ${(props) => props.theme.palette.text.primary};
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  /* display: flex;
+  flex-direction: column; */
+  min-height: 100vh;
   transition:
     background-color 0.5s ease,
     color 0.5s ease;
-  overflow: auto;
+  /* overflow: auto; */
 `;
 
 const ContentContainer = styled("main")`
@@ -46,15 +46,30 @@ type AppSection = {
 };
 
 const sections: AppSection[] = [
-  { path: "/", name: "Home", id: "home", element: <Home /> },
-  { path: "/about", name: "About", id: "about", element: <About /> },
+  {
+    path: "/",
+    name: "Home",
+    id: "home",
+    element: <Home />,
+  },
+  {
+    path: "/about",
+    name: "About",
+    id: "about",
+    element: <About />,
+  },
   {
     path: "/experience",
     name: "Experience",
     id: "experience",
     element: <Experience />,
   },
-  { path: "/hobbies", name: "Hobbies", id: "hobbies", element: <Hobbies /> },
+  {
+    path: "/hobbies",
+    name: "Hobbies",
+    id: "hobbies",
+    element: <Hobbies />,
+  },
 ];
 
 export default function App() {
@@ -105,28 +120,28 @@ export default function App() {
       return;
     }
 
-    const scrollToSection = (path: string) => {
-      const sectionId = path.substring(1) || "home";
-      const sectionElement = document.getElementById(sectionId);
+    // const scrollToSection = (path: string) => {
+    //   const sectionId = path.substring(1) || "home";
+    //   const sectionElement = document.getElementById(sectionId);
 
-      // Get the dynamic navbar height with a fallback
-      const navbarHeight =
-        parseFloat(theme.mixins.toolbar.minHeight as string) || 64;
+    //   // Get the dynamic navbar height with a fallback
+    //   const navbarHeight =
+    //     parseFloat(theme.mixins.toolbar.minHeight as string) || 64;
 
-      if (sectionElement && appContainerRef.current) {
-        // 💡 Calculate the correct top position by subtracting the navbar's height
-        const topPosition = sectionElement.offsetTop - navbarHeight;
+    //   if (sectionElement && appContainerRef.current) {
+    //     // 💡 Calculate the correct top position by subtracting the navbar's height
+    //     const topPosition = sectionElement.offsetTop - navbarHeight;
 
-        // 💡 Scroll the container ref, not the window
-        appContainerRef.current.scrollTo({
-          top: topPosition,
-          behavior: "smooth",
-        });
-      }
-    };
+    //     // 💡 Scroll the container ref, not the window
+    //     appContainerRef.current.scrollTo({
+    //       top: topPosition,
+    //       behavior: "smooth",
+    //     });
+    //   }
+    // };
 
-    // Only call the function when the path changes
-    scrollToSection(location.pathname);
+    // // Only call the function when the path changes
+    // scrollToSection(location.pathname);
   }, [location, theme]); // Dependencies ensure the effect runs on route changes
 
   return (
@@ -134,11 +149,11 @@ export default function App() {
       <CssBaseline />
       <AppContainer ref={appContainerRef}>
         <Navbar />
-        <ContentContainer>
-          {sections.map((section) => (
-            <React.Fragment key={section.id}>{section.element}</React.Fragment>
-          ))}
-        </ContentContainer>
+        {/* <ContentContainer> */}
+        {sections.map((section) => (
+          <React.Fragment key={section.id}>{section.element}</React.Fragment>
+        ))}
+        {/* </ContentContainer> */}
       </AppContainer>
     </ThemeProvider>
   );

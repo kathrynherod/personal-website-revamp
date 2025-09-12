@@ -1,37 +1,39 @@
-import { Box,Paper, Stack, styled, Typography } from "@mui/material";
+import { Box, Stack, styled, Typography } from "@mui/material";
 
 import KathrynAndOlive from "../assets/images/kathryn-herod-with-olive.jpg";
 
-const AboutContainer = styled(Stack)`
+const AboutContainer = styled("div")`
   align-items: center;
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
   justify-content: center;
-  min-height: calc(100vh - ${({ theme }) => theme.mixins.toolbar.minHeight}px);
+  height: 100vh;
+  overflow: hidden;
 `;
 
 const ContentAndImageWrapper = styled(Box)`
   display: flex;
-  flex-direction: column; /* Default to column for mobile */
+  flex-direction: column;
   align-items: center;
   gap: 3rem;
   padding: 2rem;
 
   @media (min-width: 900px) {
-    flex-direction: row; /* Switch to row for desktop */
+    flex-direction: row;
     align-items: flex-start;
   }
 `;
 
 const TextContentWrapper = styled(Box)`
-  max-width: 700px; /* Limit text width for better readability */
+  max-width: 700px;
 `;
 
 const SelfImage = styled("img")`
-  width: 100%;
+  width: 250px;
   height: 100%;
   object-fit: cover;
-  /* Removed border-radius: 50% here for rectangular image */
-  border-radius: 8px; /* Added slight border-radius for softer corners on the image itself */
+  border-radius: 8px;
 `;
 
 export default function About() {
@@ -85,12 +87,12 @@ export default function About() {
             </Typography>
           </Stack>
         </TextContentWrapper>
-
-        <Paper
+        <SelfImage src={KathrynAndOlive} alt="Kathryn and Olive" />
+        {/* <Paper
           elevation={8}
           sx={{
             borderRadius:
-              "12px" /* Adjust this for rounded corners on the frame */,
+              "12px" / * Adjust this for rounded corners on the frame * /,
             width: 300, // Example width
             height: 400, // Example height for a portrait-like rectangle
             display: "flex",
@@ -103,7 +105,7 @@ export default function About() {
           }}
         >
           <SelfImage src={KathrynAndOlive} alt="Kathryn and Olive" />
-        </Paper>
+        </Paper> */}
       </ContentAndImageWrapper>
     </AboutContainer>
   );

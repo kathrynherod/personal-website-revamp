@@ -13,12 +13,11 @@ body {
   font-family: "Poppins", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-size: 1rem;
-  height: 100vh;
   letter-spacing: 0.00938em;
   line-height: 1.5;
   margin: 0;
+  min-height: 100vh;
   min-width: 375px;
-  overflow: hidden;
   width: 100%;
 }
 
@@ -43,8 +42,3 @@ a {
   }
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}

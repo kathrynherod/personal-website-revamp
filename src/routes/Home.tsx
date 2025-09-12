@@ -4,7 +4,7 @@ const JumboH1Container = styled(Stack)`
   align-items: center;
   flex-grow: 1;
   justify-content: center;
-  min-height: calc(100vh - ${({ theme }) => theme.mixins.toolbar.minHeight}px);
+  height: calc(100vh - ${({ theme }) => theme.mixins.toolbar.minHeight}px);
 `;
 const JumboH1 = styled(Typography)`
   font-size: 4rem;

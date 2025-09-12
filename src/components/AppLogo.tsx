@@ -5,7 +5,7 @@ import darkLogo from "../assets/images/logo-dark.svg";
 import lightLogo from "../assets/images/logo-light.svg";
 
 const StyledLogo = styled("img")`
-  width: 50px;
+  width: 50px; // NO UNDERLINEEEEEEEE
 `;
 
 function AppLogo() {
