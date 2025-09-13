@@ -56,34 +56,34 @@ const QuoteSection = styled(Box)`
   border-radius: 12px;
 `;
 
-const QuoteText = styled(Typography)`
-  font-size: 2.5rem;
-  font-style: italic;
-  font-weight: 600;
-  line-height: 1.3;
+// const QuoteText = styled(Typography)`
+//   font-size: 2.5rem;
+//   font-style: italic;
+//   font-weight: 600;
+//   line-height: 1.3;
 
-  &::before {
-    content: ""
-      ";
-    font-size: 3rem;
-    line-height: 0;
-  }
+//   &::before {
+//     content: ""
+//       ";
+//     font-size: 3rem;
+//     line-height: 0;
+//   }
 
-  &::after {
-    content: " "";
-    font-size: 3rem;
-    line-height: 0;
-  }
+//   &::after {
+//     content: " "";
+//     font-size: 3rem;
+//     line-height: 0;
+//   }
 
-  ${({ theme }) => theme.breakpoints.down("md")} {
-    font-size: 1.75rem;
+//   ${({ theme }) => theme.breakpoints.down("md")} {
+//     font-size: 1.75rem;
 
-    &::before,
-    &::after {
-      font-size: 2rem;
-    }
-  }
-`;
+//     &::before,
+//     &::after {
+//       font-size: 2rem;
+//     }
+//   }
+// `;
 
 const hobbies = [
   {
@@ -123,8 +123,8 @@ export default function Hobbies() {
         <SectionTitle variant="h1">Hobbies</SectionTitle>
 
         <Grid container spacing={4} sx={{ mb: 6 }}>
-          {hobbies.map((hobby, index) => (
-            <Grid item xs={12} md={4} key={index}>
+          {hobbies.map((hobby) => (
+            <Grid>
               <HobbyCard elevation={2}>
                 <HobbyIcon>{hobby.icon}</HobbyIcon>
                 <HobbyTitle variant="h4">{hobby.title}</HobbyTitle>

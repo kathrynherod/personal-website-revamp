@@ -1,6 +1,6 @@
 import { CssBaseline, styled, ThemeProvider } from "@mui/material";
 import React, { type ReactNode, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
@@ -56,7 +56,6 @@ const sections: AppSection[] = [
 
 export default function App() {
   const [themeMode] = useThemeMode();
-  const location = useLocation();
   const navigate = useNavigate();
 
   const isScrollingRef = useRef(false);

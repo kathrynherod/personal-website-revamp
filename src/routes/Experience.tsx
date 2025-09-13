@@ -84,12 +84,8 @@ export default function Experience() {
         <Stack spacing={2}>
           {resumeData.experience.map((job, index) => (
             <VerticalTab key={index} elevation={0}>
-              <JobTitle variant="h4" component="h3">
-                {job.title}
-              </JobTitle>
-              <CompanyName variant="h6" component="div">
-                {job.company}
-              </CompanyName>
+              <JobTitle variant="h4">{job.title}</JobTitle>
+              <CompanyName variant="h6">{job.company}</CompanyName>
               <JobPeriod variant="body2">
                 {job.period} • {job.location}
               </JobPeriod>
