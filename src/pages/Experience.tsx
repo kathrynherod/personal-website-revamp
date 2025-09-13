@@ -79,7 +79,7 @@ export default function Experience() {
   return (
     <ExperienceContainer id="experience">
       <Box maxWidth="lg" sx={{ margin: "0 auto" }}>
-        <SectionTitle variant="h1">Work Experience</SectionTitle>
+        <SectionTitle variant="h3">Work Experience</SectionTitle>
 
         <Stack spacing={2}>
           {resumeData.experience.map((job, index) => (

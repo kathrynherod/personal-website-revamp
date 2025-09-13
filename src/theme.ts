@@ -90,7 +90,7 @@ export const lightTheme = createTheme({
       main: darkBlue,
     },
     secondary: {
-      main: limeGreen,
+      main: "#002A3D",
     },
     background: {
       default: limeGreen,
@@ -98,7 +98,7 @@ export const lightTheme = createTheme({
     },
     text: {
       primary: darkBlue,
-      secondary: darkBlue,
+      secondary: "#002A3D",
     },
     brand: {
       darkBlue,

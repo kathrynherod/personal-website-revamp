@@ -12,16 +12,19 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
-import { NavLink } from "react-router-dom";
 
-import type { NavbarPage } from "../types/NavbarPage";
 import AppLogo from "./AppLogo";
 import ThemeToggle from "./ThemeToggle";
 
+type NavbarPage = {
+  display: string;
+  id: string;
+};
+
 const pages: NavbarPage[] = [
-  { display: "About", route: "/about" },
-  { display: "Experience", route: "/experience" },
-  { display: "Hobbies", route: "/hobbies" },
+  { display: "About", id: "about" },
+  { display: "Experience", id: "experience" },
+  { display: "Hobbies", id: "hobbies" },
 ];
 
 const StyledToolbar = styled(Toolbar)`
@@ -53,7 +56,30 @@ const CustomMenuItemDivider = styled(Divider)`
   width: 2px;
 `;
 
-export default function Navbar() {
+const NavButton = styled("button")<{ $isActive: boolean }>`
+  background: none;
+  border: none;
+  border-bottom: ${({ $isActive }) =>
+    $isActive ? "2px solid currentColor" : "2px solid transparent"};
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-bottom: 2px solid currentColor;
+  }
+`;
+
+type NavbarProps = {
+  activeSection: string;
+  onNavigate: (sectionId: string) => void;
+};
+
+export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -66,10 +92,26 @@ export default function Navbar() {
     setAnchorElNav(null);
   };
 
+  const handleNavClick = (sectionId: string) => {
+    onNavigate(sectionId);
+    handleCloseNavMenu();
+  };
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
-        <AppLogo />
+        <Box
+          component="button"
+          onClick={() => onNavigate("home")}
+          sx={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: 0,
+          }}
+        >
+          <AppLogo />
+        </Box>
 
         <MobileMenuItems>
           <IconButton
@@ -98,8 +140,15 @@ export default function Navbar() {
             onClose={handleCloseNavMenu}
             sx={{ display: { xs: "block", md: "none" } }}
           >
-            {pages.map(({ display, route }: NavbarPage) => (
-              <MenuItem key={route} onClick={handleCloseNavMenu}>
+            {pages.map(({ display, id }: NavbarPage) => (
+              <MenuItem
+                key={id}
+                onClick={() => handleNavClick(id)}
+                sx={{
+                  backgroundColor:
+                    activeSection === id ? "rgba(0,0,0,0.1)" : "transparent",
+                }}
+              >
                 <Typography sx={{ textAlign: "center" }}>{display}</Typography>
               </MenuItem>
             ))}
@@ -109,13 +158,15 @@ export default function Navbar() {
           </Menu>
         </MobileMenuItems>
 
-        {/** Desktop Navigation */}
         <DesktopMenuItems>
           {pages.map((page: NavbarPage, index: number) => (
             <React.Fragment key={page.display}>
-              <NavLink to={page.route} onClick={handleCloseNavMenu}>
+              <NavButton
+                onClick={() => handleNavClick(page.id)}
+                $isActive={activeSection === page.id}
+              >
                 {page.display}
-              </NavLink>
+              </NavButton>
               {index < pages.length - 1 && (
                 <Stack direction="row" spacing={1}>
                   <CustomMenuItemDivider flexItem orientation="vertical" />

@@ -52,6 +52,10 @@ const SelfImage = styled("img")`
 export default function About() {
   return (
     <AboutContainer id="about">
+      <Typography variant="h3" gutterBottom>
+        About Me
+      </Typography>
+
       <ContentAndImageWrapper>
         <TextContentWrapper>
           {/* <Blockquote author="Michael Feathers">

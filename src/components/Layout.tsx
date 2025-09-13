@@ -4,27 +4,22 @@ import {
   Button,
   Container,
   CssBaseline,
-  Link as MuiLink,
+  Link,
   ThemeProvider,
   Toolbar,
   Typography,
 } from "@mui/material";
-import { Link, Outlet } from "react-router-dom";
 
 import { useThemeMode } from "../hooks/useThemeMode";
-import { darkTheme,lightTheme } from "../theme";
+import { darkTheme, lightTheme } from "../theme";
 
 const NavLink = ({
-  to,
+  // to,
   children,
 }: {
   to: string;
   children: React.ReactNode;
-}) => (
-  <Button color="inherit" component={Link} to={to}>
-    {children}
-  </Button>
-);
+}) => <Link>{children}</Link>;
 
 export default function Layout() {
   const [mode, toggleMode] = useThemeMode();
@@ -37,14 +32,13 @@ export default function Layout() {
       >
         <AppBar position="static">
           <Toolbar>
-            <Typography
+            {/* <Link
               variant="h6"
-              component={Link}
               to="/"
               sx={{ flexGrow: 1, color: "inherit", textDecoration: "none" }}
             >
               Kathryn Herod
-            </Typography>
+            </Link> */}
             <nav>
               <NavLink to="/">Home</NavLink>
               <NavLink to="/about">About</NavLink>
@@ -58,7 +52,7 @@ export default function Layout() {
           </Toolbar>
         </AppBar>
         <Container component="main" sx={{ mt: 4, mb: 2, flexGrow: 1 }}>
-          <Outlet />
+          {/* <Outlet /> */}
         </Container>
         <Box
           component="footer"
@@ -75,9 +69,9 @@ export default function Layout() {
           <Container maxWidth="sm">
             <Typography variant="body2" color="text.secondary" align="center">
               {"Copyright © "}
-              <MuiLink color="inherit" href="https://kathrynherod.com/">
+              {/* <MuiLink color="inherit" href="https://kathrynherod.com/">
                 Kathryn Herod
-              </MuiLink>{" "}
+              </MuiLink>{" "} */}
               {new Date().getFullYear()}
             </Typography>
           </Container>

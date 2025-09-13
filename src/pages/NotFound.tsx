@@ -1,5 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Link, Typography } from "@mui/material";
 
 export default function NotFound() {
   return (
@@ -23,15 +22,9 @@ export default function NotFound() {
       <Typography variant="body1" sx={{ mb: 4 }}>
         The page you are looking for does not exist.
       </Typography>
-      <Button
-        component={Link}
-        to="/"
-        variant="contained"
-        color="primary"
-        size="large"
-      >
+      <Link href="/" color="primary">
         Go Home
-      </Button>
+      </Link>
     </Box>
   );
 }

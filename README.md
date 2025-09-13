@@ -17,7 +17,6 @@ A modern, responsive personal portfolio website built with React 19, TypeScript,
 - **TypeScript** - Type-safe JavaScript
 - **Vite** - Fast build tool and development server
 - **Material-UI (MUI)** - React component library with theming
-- **React Router** - Client-side routing
 - **ESLint** - Code linting and formatting
 
 ## Getting Started
@@ -68,7 +67,7 @@ npm run lint
   - `contexts/` - React context definitions
   - `providers/` - Context providers with business logic
   - `hooks/` - Custom React hooks
-  - `routes/` - Page components for each portfolio section
+  - `pages/` - Page components for each section
   - `theme.ts` - Material-UI theme configuration
 
 ## Architecture
