@@ -1,152 +1,262 @@
-import {
-  Box,
-  Chip,
-  Paper,
-  Stack,
-  styled,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
+import React, { useRef, useState } from "react";
 
 import resumeData from "../assets/resume.json";
+import { Education, Skills } from "../components/EducationAndSkills";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+
+const experienceData = resumeData.experience;
 
 const ExperienceContainer = styled("div")`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
-  padding: ${({ theme }) => theme.spacing(8, 2)};
-  background-color: ${({ theme }) => theme.palette.background.default};
+  overflow: hidden;
+  padding: ${({ theme }) => theme.spacing(4, 2)};
 `;
 
-const SectionTitle = styled(Typography)`
-  margin-bottom: ${({ theme }) => theme.spacing(4)};
-  text-align: center;
-`;
+const ContentWrapper = styled(Box)`
+  max-width: 1200px;
+  padding: 1rem 2rem;
+  width: 100%;
 
-const VerticalTab = styled(Paper)`
-  background-color: ${({ theme }) => theme.palette.brand.limeGreen};
-  color: ${({ theme }) => theme.palette.brand.darkBlue};
-  padding: ${({ theme }) => theme.spacing(2.5)};
-  margin-bottom: ${({ theme }) => theme.spacing(2)};
-  border-radius: 0;
-  box-shadow: none;
-
-  &:hover {
-    box-shadow: ${({ theme }) =>
-      theme.palette.mode === "light"
-        ? "0px 4px 20px rgba(1, 52, 77, 0.1)"
-        : "0px 4px 20px rgba(156, 206, 77, 0.1)"};
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    padding: 2rem 4rem;
   }
 `;
 
-const JobTitle = styled(Typography)`
-  font-weight: 800;
-  margin-bottom: ${({ theme }) => theme.spacing(0.5)};
+const ExperienceGrid = styled(Box)`
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin-top: 2rem;
+
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    gap: 1rem;
+    grid-template-columns: 300px 1fr;
+  }
+`;
+
+const TimelineContentSection = styled(Box)`
+  text-align: left;
+
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    padding-right: 1rem;
+    text-align: right;
+  }
+`;
+
+const TimelineItem = styled(Box)<{ active: boolean }>`
+  cursor: pointer;
+  display: none;
+  height: 80px;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
+
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    border-left: 4px solid
+      ${({ active, theme }) =>
+        active ? theme.palette.primary.main : "transparent"};
+    display: flex;
+    margin-bottom: 0;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.palette.action.hover};
+    }
+  }
+`;
+
+const MobileTimelineMarker = styled(Box)<{ active: boolean }>`
+  background-color: ${({ active, theme }) =>
+    active ? theme.palette.primary.main : theme.palette.grey[400]};
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: ${({ active, theme }) =>
+    `0 0 0 2px ${active ? theme.palette.primary.main : theme.palette.grey[400]}`};
+  flex-shrink: 0;
+  height: 12px;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+  width: 12px;
+
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    display: none;
+  }
+`;
+
+const TimelineContent = styled(Box)`
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+`;
+
+const MobileExperienceDetails = styled(Box)<{ isVisible: boolean }>`
+  margin-bottom: 3rem;
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  transform: ${({ isVisible }) =>
+    isVisible ? "translateY(0)" : "translateY(30px)"};
+  transition: all 0.6s ease;
+
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    display: none;
+  }
+`;
+
+// Component for individual mobile experience with intersection observer
+const MobileExperienceItem = ({ exp }: { exp: any }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useIntersectionObserver(ref, {
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px",
+  });
+
+  return (
+    <MobileExperienceDetails ref={ref} isVisible={isVisible}>
+      <Box>
+        <JobTitle variant="h5">{exp.title}</JobTitle>
+        <DetailCompanyName variant="h6">{exp.company}</DetailCompanyName>
+        <DetailDuration>
+          {exp.duration} • {exp.location}
+        </DetailDuration>
+      </Box>
+
+      <Box>
+        {exp.responsibilities.map((responsibility: string, index: number) => (
+          <ResponsibilityItem key={index} variant="body1">
+            {responsibility}
+          </ResponsibilityItem>
+        ))}
+      </Box>
+    </MobileExperienceDetails>
+  );
+};
+
+const DesktopExperienceDetails = styled("div")`
+  display: none;
+  opacity: 0;
+  padding: 0.5rem;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+
+  ${({ theme }) => theme.breakpoints.up("md")} {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;
 
 const CompanyName = styled(Typography)`
+  color: ${({ theme }) => theme.palette.primary.main};
+  font-size: 0.875rem;
   font-weight: 600;
-  margin-bottom: ${({ theme }) => theme.spacing(0.5)};
 `;
 
-const JobPeriod = styled(Typography)`
-  font-style: italic;
-  margin-bottom: ${({ theme }) => theme.spacing(2)};
+const Duration = styled(Typography)`
+  color: ${({ theme }) => theme.palette.text.secondary};
+  font-size: 0.8125rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
 `;
 
-const SkillsSection = styled(Box)`
-  margin-top: ${({ theme }) => theme.spacing(6)};
-  text-align: center;
-`;
-
-const SkillCategory = styled(Box)`
-  margin-bottom: ${({ theme }) => theme.spacing(3)};
-`;
-
-const SkillChip = styled(Chip)`
-  margin: ${({ theme }) => theme.spacing(0.5)};
-  background-color: ${({ theme }) => theme.palette.brand.darkBlue};
-  color: ${({ theme }) => theme.palette.brand.limeGreen};
+const JobTitle = styled(Typography)`
+  color: ${({ theme }) => theme.palette.text.primary};
   font-weight: 600;
+  margin-bottom: 0.5rem;
+`;
 
-  &:hover {
-    background-color: ${({ theme }) => theme.palette.brand.limeGreen};
-    color: ${({ theme }) => theme.palette.brand.darkBlue};
+const DetailCompanyName = styled(Typography)`
+  color: ${({ theme }) => theme.palette.primary.main};
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+`;
+
+const DetailDuration = styled(Typography)`
+  color: ${({ theme }) => theme.palette.text.secondary};
+  font-weight: 400;
+  margin-bottom: 2rem;
+`;
+
+const ResponsibilityItem = styled(Typography)`
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  padding-left: 1rem;
+  position: relative;
+
+  &::before {
+    color: ${({ theme }) => theme.palette.primary.main};
+    content: "•";
+    font-weight: bold;
+    left: 0;
+    position: absolute;
   }
 `;
 
 export default function Experience() {
-  const theme = useTheme();
+  const [activeExperience, setActiveExperience] = useState(experienceData[0]);
 
   return (
     <ExperienceContainer id="experience">
-      <Box maxWidth="lg" sx={{ margin: "0 auto" }}>
-        <SectionTitle variant="h3">Work Experience</SectionTitle>
+      <ContentWrapper>
+        <Typography variant="h3" gutterBottom>
+          Experience
+        </Typography>
 
-        <Stack spacing={2}>
-          {resumeData.experience.map((job, index) => (
-            <VerticalTab key={index} elevation={0}>
-              <JobTitle variant="h4">{job.title}</JobTitle>
-              <CompanyName variant="h6">{job.company}</CompanyName>
-              <JobPeriod variant="body2">
-                {job.period} • {job.location}
-              </JobPeriod>
+        <ExperienceGrid>
+          {/* Timeline Content Section */}
+          <TimelineContentSection>
+            {experienceData.map((exp) => (
+              <React.Fragment key={exp.id}>
+                <TimelineItem
+                  active={activeExperience.id === exp.id}
+                  onClick={() => setActiveExperience(exp)}
+                >
+                  <MobileTimelineMarker
+                    active={activeExperience.id === exp.id}
+                  />
 
-              <Stack spacing={1}>
-                {job.achievements.map((achievement, achievementIndex) => (
-                  <Typography
-                    key={achievementIndex}
-                    variant="body1"
-                    sx={{
-                      "&::before": {
-                        content: '"• "',
-                        fontWeight: "bold",
-                        color: theme.palette.brand.darkBlue,
-                      },
-                    }}
-                  >
-                    {achievement}
-                  </Typography>
-                ))}
-              </Stack>
-            </VerticalTab>
-          ))}
-        </Stack>
+                  <TimelineContent>
+                    <Duration>{exp.duration}</Duration>
+                    <CompanyName>{exp.company}</CompanyName>
+                  </TimelineContent>
+                </TimelineItem>
 
-        <SkillsSection>
-          <Typography variant="h2" gutterBottom>
-            Technical Skills
-          </Typography>
-
-          <SkillCategory>
-            <Typography variant="h5" gutterBottom>
-              Backend
-            </Typography>
-            {resumeData.skills.backend.map((skill) => (
-              <SkillChip key={skill} label={skill} size="medium" />
+                {/* Mobile Experience Details - Show all experiences on mobile */}
+                <MobileExperienceItem exp={exp} />
+              </React.Fragment>
             ))}
-          </SkillCategory>
+          </TimelineContentSection>
 
-          <SkillCategory>
-            <Typography variant="h5" gutterBottom>
-              Frontend
-            </Typography>
-            {resumeData.skills.frontend.map((skill) => (
-              <SkillChip key={skill} label={skill} size="medium" />
-            ))}
-          </SkillCategory>
+          {/* Experience Details Section - Desktop Only */}
+          <DesktopExperienceDetails>
+            <Box>
+              <JobTitle variant="h5">{activeExperience.title}</JobTitle>
+              <DetailCompanyName variant="h6">
+                {activeExperience.company}
+              </DetailCompanyName>
+              <DetailDuration>
+                {activeExperience.duration} • {activeExperience.location}
+              </DetailDuration>
+            </Box>
 
-          <SkillCategory>
-            <Typography variant="h5" gutterBottom>
-              Tools & Methodologies
-            </Typography>
-            {[
-              ...resumeData.skills.tools,
-              ...resumeData.skills.methodologies,
-            ].map((skill) => (
-              <SkillChip key={skill} label={skill} size="medium" />
-            ))}
-          </SkillCategory>
-        </SkillsSection>
-      </Box>
+            <Box>
+              {activeExperience.responsibilities.map(
+                (responsibility, index) => (
+                  <ResponsibilityItem key={index} variant="body1">
+                    {responsibility}
+                  </ResponsibilityItem>
+                )
+              )}
+            </Box>
+          </DesktopExperienceDetails>
+        </ExperienceGrid>
+      </ContentWrapper>
+      <Skills />
+      <Education />
     </ExperienceContainer>
   );
 }

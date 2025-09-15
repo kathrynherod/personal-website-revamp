@@ -1,109 +1,228 @@
 {
-  "name": "Kathryn Herod",
-  "location": "Katy, TX 77494",
-  "phone": "281-989-4865",
-  "email": "kathryn.herod@gmail.com",
-  "linkedin": "linkedin.com/in/kathrynherod",
-  "github": "github.com/kathrynherod",
-  "website": "kathrynherod.com",
-  "summary": "Full-stack software engineer with 7+ years of experience building scalable applications using C# and modern frontend frameworks. Proven track record of modernizing legacy systems, implementing test-driven development practices, and leading cross-functional teams. Strong background in technical execution and business strategy.",
-  "skills": {
-    "backend": ["C#", "ASP.NET", "SQL", "REST APIs", "Node.js"],
-    "frontend": [
-      "TypeScript",
-      "JavaScript",
-      "Angular",
-      "React",
-      "HTML5",
-      "CSS3",
-      "SASS"
-    ],
-    "tools": ["Azure DevOps", "Git", "Bootstrap", "Redux"],
-    "methodologies": ["Agile", "Scrum", "Test Driven Development"]
+  "personalInfo": {
+    "name": "Kathryn Herod",
+    "title": "Senior Software Engineer",
+    "email": "kathryn.herod@gmail.com",
+    "phone": "(281) 989-4865",
+    "location": "Katy, Texas (Remote)",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/kathrynherod/",
+      "github": "https://github.com/kathrynherod",
+      "website": "https://kathrynherod.com"
+    }
   },
+  "professionalSummary": "Senior Full-Stack Software Engineer with over seven years of development experience and proven leadership capabilities. Proficient in modern web technologies including C#, TypeScript, React, and Angular. Successfully transitioned from entrepreneurship (built and sold $600K+ business) to senior engineering roles. Demonstrated ability to lead teams, mentor developers, and drive technical initiatives from concept to deployment.",
   "experience": [
     {
+      "id": 1,
       "title": "Senior Software Engineer",
-      "company": "[Company Name]",
-      "period": "2023 - Present",
+      "company": "Ask Me",
       "location": "Remote",
-      "achievements": [
-        "Architected scalable back-end services using C# and ASP.NET, improving system performance",
-        "Built responsive frontend applications with TypeScript, React, and Angular",
-        "Drove technical decisions throughout the full software development lifecycle"
+      "duration": "Feb 2023 – Present",
+      "responsibilities": [
+        "Develop robust back-end applications across multiple projects",
+        "Create responsive front-end interfaces with TypeScript, React, and Angular, enhancing user experience and engagement metrics",
+        "Lead full-stack integration initiatives, ensuring seamless data flow between client and server systems while improving overall system performance",
+        "Contribute to complete software development lifecycle from concept to deployment in collaborative team environment"
       ]
     },
     {
-      "title": "Front End Developer",
+      "id": 2,
+      "title": "Full Stack Developer (Technical Lead)",
       "company": "Identity Automation",
-      "period": "2020 - 2022",
       "location": "Remote",
-      "achievements": [
-        "Spearheaded frontend modernization initiatives, increasing team delivery velocity",
-        "Established test-driven development standards, reducing production bugs",
-        "Integrated multiple backend APIs to expand application functionality"
+      "duration": "Sep 2020 – Feb 2023",
+      "responsibilities": [
+        "Led front-end development team initiatives, implementing agile practices that improved team efficiency",
+        "Established test-driven development standards, significantly increasing code quality and reducing production bugs by getting test coverage to nearly 70% on our flagship product",
+        "Developed and maintained backend services, integrating multiple APIs to support frontend functionality",
+        "Collaborated with product managers to refine feature requirements and ensure alignment with user needs"
       ]
     },
     {
+      "id": 3,
       "title": "Front End Developer",
       "company": "O'Reilly Auto Parts",
-      "period": "2020",
       "location": "Remote",
-      "achievements": [
-        "Designed comprehensive design system for retail point-of-sale applications",
-        "Developed reusable JavaFX components, accelerating development cycles"
+      "duration": "Apr 2020 – Sep 2020",
+      "responsibilities": [
+        "Developed and maintained comprehensive design system for retail POS division, ensuring UI consistency across 15+ development teams",
+        "Created reusable JavaFX components and rapid prototyped features, improving development velocity across multiple teams",
+        "Collaborated with business analysts to align prototypes with design standards and document technical requirements"
       ]
     },
     {
+      "id": 4,
       "title": "Front End Developer & Scrum Master",
       "company": "Identity Automation",
-      "period": "2018 - 2020",
-      "location": "Houston, TX",
-      "achievements": [
-        "Led frontend development while serving as Scrum Master for cross-functional teams",
-        "Implemented Scrum methodologies that improved project delivery timelines",
-        "Mentored developers on best practices and facilitated sprint planning"
+      "location": "Remote",
+      "duration": "Oct 2018 – Apr 2020",
+      "responsibilities": [
+        "Served dual role as technical developer and Scrum Master, facilitating agile ceremonies and removing team blockers",
+        "Mentored junior developers on front-end best practices and modern JavaScript frameworks",
+        "Implemented responsive web solutions using modern CSS frameworks and JavaScript libraries"
       ]
     },
     {
+      "id": 5,
       "title": "Software Engineer Senior Analyst",
       "company": "Accenture",
-      "period": "2017 - 2018",
       "location": "Houston, TX",
-      "achievements": [
-        "Developed responsive single-page applications using Angular and React",
-        "Created interactive mockups for enterprise software redesigns",
-        "Facilitated design thinking workshops with stakeholders"
+      "duration": "Dec 2017 – Oct 2018",
+      "responsibilities": [
+        "Designed interactive wireframes and mockups for legacy software redesign projects and developed single-page applications using Angular and React for Fortune 500 clients",
+        "Co-facilitated design thinking workshops, driving innovative solutions for client challenges",
+        "Contributed to team culture and collaboration initiatives in fast-paced consulting environment"
       ]
     },
     {
-      "title": "Entrepreneur & Pastry Chef",
+      "id": 6,
+      "title": "Founder & Technical Lead",
       "company": "Well Done Cooking Classes",
-      "period": "2009 - 2018",
       "location": "Houston, TX",
-      "achievements": [
-        "Founded and scaled cooking education business to $600,000 annual revenue before acquisition",
-        "Managed full-stack web development and secure e-commerce integration",
-        "Led teams of up to 40 people during high-volume events"
+      "duration": "Jan 2009 – Sep 2018",
+      "responsibilities": [
+        "Built and successfully sold cooking education business generating $600K+ annual revenue",
+        "Led technical initiatives including full-stack web development, e-commerce integration, and SEO optimization",
+        "Integrated Authorize.net APIs for PCI-compliant payment processing",
+        "Implemented responsive web design and performance optimizations, reducing page load times and improving checkout conversions",
+        "Coordinated culinary instruction for groups of 40+ participants, managing timing and logistics for multi-course meal preparation"
       ]
     }
   ],
+  "skills": {
+    "technical": {
+      "backendDatabase": [
+        "C#",
+        ".NET",
+        "ASP.NET",
+        "ASP.NET Razor",
+        "Java",
+        "Groovy",
+        "Node.js",
+        "Express.js",
+        "REST APIs",
+        "SQL",
+        "PostgreSQL",
+        "MongoDB"
+      ],
+      "frontendStyling": [
+        "TypeScript",
+        "JavaScript",
+        "React.js",
+        "Angular",
+        "HTML5",
+        "CSS3",
+        "MUI",
+        "Redux",
+        "Responsive Design",
+        "JavaFX",
+        "Bootstrap",
+        "SASS",
+        "Ember.js"
+      ],
+      "toolsPlatforms": [
+        "Git",
+        "Azure DevOps",
+        "Docker",
+        "AWS",
+        "CI/CD",
+        "Heroku"
+      ],
+      "testing": [
+        "xUnit",
+        "Moq",
+        "Jest",
+        "Vitest",
+        "Cypress",
+        "Mirage",
+        "MSW",
+        "Faker.js",
+        "QUnit"
+      ],
+      "ecommerceSeo": [
+        "Authorize.net APIs",
+        "PCI Compliance",
+        "SEO Optimization",
+        "Full-stack E-commerce Development"
+      ]
+    },
+    "soft": {
+      "leadershipManagement": [
+        "Engineering Team Leadership",
+        "Technical Mentoring",
+        "Business Management",
+        "Cross-functional Team Management"
+      ],
+      "processMethodology": [
+        "Agile Methodologies",
+        "Scrum Master (Certified)",
+        "Design Thinking Facilitation",
+        "Test-Driven Development Implementation"
+      ],
+      "communicationCollaboration": [
+        "Requirements Gathering",
+        "Stakeholder Collaboration",
+        "Technical Documentation",
+        "Design Thinking Workshops"
+      ]
+    }
+  },
   "education": [
     {
-      "school": "The University of Texas at Austin",
+      "id": 1,
       "degree": "Full Stack Developer Certification",
-      "year": "2017"
+      "institution": "The University of Texas at Austin",
+      "year": "2017",
+      "type": "certification"
     },
     {
-      "school": "The University of Texas at Austin",
+      "id": 2,
       "degree": "Bachelor of Arts",
-      "year": "2005 - 2007"
+      "institution": "The University of Texas at Austin",
+      "year": "2005 - 2007",
+      "type": "degree"
+    },
+    {
+      "id": 3,
+      "degree": "Associate of Arts",
+      "institution": "Houston Community College",
+      "year": "2003 - 2005",
+      "type": "degree"
+    },
+    {
+      "id": 4,
+      "degree": "Certified Scrum Master (CSM)",
+      "institution": "Scrum Alliance",
+      "year": "2020-2024",
+      "type": "certification"
     }
   ],
-  "certifications": [
-    "Certified Scrum Master (CSM)",
-    "Team Leadership",
-    "UX/UI Design",
-    "SEO"
-  ]
+  "interests": {
+    "volunteerWork": [
+      {
+        "id": 1,
+        "organization": "Greater Houston German Shepherd Dog Rescue",
+        "role": "Board Member, Foster, Tech Lead",
+        "duration": "Jan 2020 - present"
+      },
+      {
+        "id": 2,
+        "organization": "ECHO Orchestra",
+        "role": "Member & Musician",
+        "duration": "Aug 2019 - Jan 2023"
+      }
+    ],
+    "hobbies": [
+      "Woodworking/furniture building",
+      "Playing French horn in local orchestras",
+      "Painting abstract art"
+    ]
+  },
+  "theme": {
+    "primaryColor": "#2c5282",
+    "backgroundColor": "#f8f9fa",
+    "textColor": "#333",
+    "accentColor": "#666"
+  }
 }
