@@ -1,5 +1,4 @@
-// Personal Information Types
-export interface PersonalInfo {
+export type PersonalInfo = {
   email: string;
   links: {
     github: string;
@@ -10,69 +9,52 @@ export interface PersonalInfo {
   name: string;
   phone: string;
   title: string;
-}
+};
 
-// Experience Types
-export interface Experience {
+export type Experience = {
   company: string;
   duration: string;
   id: number;
   location: string;
   responsibilities: string[];
   title: string;
-}
+};
+export type SkillCategory = {
+  title: string;
+  skills: string[];
+};
+export type Skills = {
+  soft: SkillCategory[];
+  technical: SkillCategory[];
+};
 
-// Skills Types
-export interface TechnicalSkills {
-  backendDatabase: string[];
-  ecommerceSeo: string[];
-  frontendStyling: string[];
-  testing: string[];
-  toolsPlatforms: string[];
-}
-
-export interface SoftSkills {
-  communicationCollaboration: string[];
-  leadershipManagement: string[];
-  processMethodology: string[];
-}
-
-export interface Skills {
-  soft: SoftSkills;
-  technical: TechnicalSkills;
-}
-
-export type EducationType = "certification" | "degree";
-
-export interface Education {
+export type Education = {
   degree: string;
   id: number;
   institution: string;
-  type: EducationType;
   year: string;
-}
+};
 
-// Interests Types
-export interface VolunteerWork {
+export type VolunteerWork = {
   duration: string;
   id: number;
   organization: string;
   role: string;
-}
+};
 
-export interface Interests {
+export type Interests = {
   hobbies: string[];
   volunteerWork: VolunteerWork[];
-}
+};
 
-export interface Theme {
+export type Theme = {
   accentColor: string;
   backgroundColor: string;
   primaryColor: string;
   textColor: string;
-}
+};
 
-export interface ResumeData {
+export type ResumeData = {
   education: Education[];
   experience: Experience[];
   interests: Interests;
@@ -80,14 +62,13 @@ export interface ResumeData {
   professionalSummary: string;
   skills: Skills;
   theme: Theme;
-}
+};
 
-export type SkillCategory = keyof TechnicalSkills | keyof SoftSkills;
 export type ExperienceId = Experience["id"];
 export type EducationId = Education["id"];
 export type VolunteerWorkId = VolunteerWork["id"];
 
-export interface ResumeComponentProps {
+export type ResumeComponentProps = {
   data: ResumeData;
   showEducation?: boolean;
   showExperience?: boolean;
@@ -95,44 +76,26 @@ export interface ResumeComponentProps {
   showPersonalInfo?: boolean;
   showSkills?: boolean;
   theme?: Partial<Theme>;
-}
+};
 
-export interface ExperienceCardProps {
+export type ExperienceCardProps = {
   experience: Experience;
   maxResponsibilities?: number;
   showResponsibilities?: boolean;
-}
+};
 
-export interface SkillsSectionProps {
+export type SkillsSectionProps = {
   layout?: "columns" | "grid" | "list";
   showSoft?: boolean;
   showTechnical?: boolean;
   skills: Skills;
-}
+};
 
-export interface EducationItemProps {
+export type EducationItemProps = {
   compact?: boolean;
   education: Education;
   showType?: boolean;
-}
-
-export const isEducationDegree = (education: Education): boolean => {
-  return education.type === "degree";
 };
-
-export const isEducationCertification = (education: Education): boolean => {
-  return education.type === "certification";
-};
-
-// Helper type for filtering
-export type FilterableExperience = Pick<
-  Experience,
-  "company" | "duration" | "location" | "title"
->;
-export type FilterableEducation = Pick<
-  Education,
-  "degree" | "institution" | "type"
->;
 
 // Default values type for partial data
 export type PartialResumeData = Partial<ResumeData>;

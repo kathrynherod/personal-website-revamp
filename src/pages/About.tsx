@@ -1,6 +1,7 @@
 import { Box, Paper, styled, Typography } from "@mui/material";
 
 import KathrynAndOlive from "../assets/images/kathryn-and-olive.png";
+import Layout from "../components/Layout";
 
 const AboutContainer = styled("div")`
   align-items: center;
@@ -90,6 +91,7 @@ export default function About() {
   return (
     <AboutContainer id="about">
       <ContentWrapper>
+        <Typography variant="h3" gutterBottom></Typography>
         <Typography variant="h2" gutterBottom>
           About Me
         </Typography>

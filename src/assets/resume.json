@@ -18,7 +18,7 @@
       "title": "Senior Software Engineer",
       "company": "Ask Me",
       "location": "Remote",
-      "duration": "Feb 2023 – Present",
+      "duration": "Mar 2023 – Present",
       "responsibilities": [
         "Develop robust back-end applications across multiple projects",
         "Create responsive front-end interfaces with TypeScript, React, and Angular, enhancing user experience and engagement metrics",
@@ -91,111 +91,131 @@
     }
   ],
   "skills": {
-    "technical": {
-      "backendDatabase": [
-        "C#",
-        ".NET",
-        "ASP.NET",
-        "ASP.NET Razor",
-        "Java",
-        "Groovy",
-        "Node.js",
-        "Express.js",
-        "REST APIs",
-        "SQL",
-        "PostgreSQL",
-        "MongoDB"
-      ],
-      "frontendStyling": [
-        "TypeScript",
-        "JavaScript",
-        "React.js",
-        "Angular",
-        "HTML5",
-        "CSS3",
-        "MUI",
-        "Redux",
-        "Responsive Design",
-        "JavaFX",
-        "Bootstrap",
-        "SASS",
-        "Ember.js"
-      ],
-      "toolsPlatforms": [
-        "Git",
-        "Azure DevOps",
-        "Docker",
-        "AWS",
-        "CI/CD",
-        "Heroku"
-      ],
-      "testing": [
-        "xUnit",
-        "Moq",
-        "Jest",
-        "Vitest",
-        "Cypress",
-        "Mirage",
-        "MSW",
-        "Faker.js",
-        "QUnit"
-      ],
-      "ecommerceSeo": [
-        "Authorize.net APIs",
-        "PCI Compliance",
-        "SEO Optimization",
-        "Full-stack E-commerce Development"
-      ]
-    },
-    "soft": {
-      "leadershipManagement": [
-        "Engineering Team Leadership",
-        "Technical Mentoring",
-        "Business Management",
-        "Cross-functional Team Management"
-      ],
-      "processMethodology": [
-        "Agile Methodologies",
-        "Scrum Master (Certified)",
-        "Design Thinking Facilitation",
-        "Test-Driven Development Implementation"
-      ],
-      "communicationCollaboration": [
-        "Requirements Gathering",
-        "Stakeholder Collaboration",
-        "Technical Documentation",
-        "Design Thinking Workshops"
-      ]
-    }
+    "technical": [
+      {
+        "title": "Backend & Database",
+        "skills": [
+          "C#",
+          ".NET",
+          "ASP.NET",
+          "ASP.NET Razor",
+          "Java",
+          "Groovy",
+          "Node.js",
+          "Express.js",
+          "REST APIs",
+          "SQL",
+          "PostgreSQL",
+          "MongoDB"
+        ]
+      },
+      {
+        "title": "Frontend & Styling",
+        "skills": [
+          "TypeScript",
+          "JavaScript",
+          "React.js",
+          "Angular",
+          "HTML5",
+          "CSS3",
+          "MUI",
+          "Redux",
+          "Responsive Design",
+          "JavaFX",
+          "Bootstrap",
+          "SASS",
+          "Ember.js"
+        ]
+      },
+      {
+        "title": "Tools & Platforms",
+        "skills": [
+          "Git",
+          "Azure DevOps",
+          "Docker",
+          "AWS",
+          "CI/CD",
+          "Heroku"
+        ]
+      },
+      {
+        "title": "Testing",
+        "skills": [
+          "xUnit",
+          "Moq",
+          "Jest",
+          "Vitest",
+          "Cypress",
+          "Mirage",
+          "MSW",
+          "Faker.js",
+          "QUnit"
+        ]
+      },
+      {
+        "title": "E-commerce & SEO",
+        "skills": [
+          "Authorize.net APIs",
+          "PCI Compliance",
+          "SEO Optimization",
+          "Full-stack E-commerce Development"
+        ]
+      }
+    ],
+    "soft": [
+      {
+        "title": "Leadership & Management",
+        "skills": [
+          "Engineering Team Leadership",
+          "Technical Mentoring",
+          "Business Management",
+          "Cross-functional Team Management"
+        ]
+      },
+      {
+        "title": "Process & Methodology",
+        "skills": [
+          "Agile Methodologies",
+          "Scrum Master (Certified)",
+          "Design Thinking Facilitation",
+          "Test-Driven Development Implementation"
+        ]
+      },
+      {
+        "title": "Communication & Collaboration",
+        "skills": [
+          "Requirements Gathering",
+          "Stakeholder Collaboration",
+          "Technical Documentation",
+          "Design Thinking Workshops"
+        ]
+      }
+    ]
   },
   "education": [
     {
       "id": 1,
       "degree": "Full Stack Developer Certification",
       "institution": "The University of Texas at Austin",
-      "year": "2017",
-      "type": "certification"
+      "year": "2017"
     },
     {
       "id": 2,
       "degree": "Bachelor of Arts",
       "institution": "The University of Texas at Austin",
-      "year": "2005 - 2007",
-      "type": "degree"
+      "year": "2005 - 2007"
     },
     {
       "id": 3,
       "degree": "Associate of Arts",
       "institution": "Houston Community College",
-      "year": "2003 - 2005",
-      "type": "degree"
+      "year": "2003 - 2005"
     },
     {
       "id": 4,
       "degree": "Certified Scrum Master (CSM)",
       "institution": "Scrum Alliance",
-      "year": "2020-2024",
-      "type": "certification"
+      "year": "2020-2024"
     }
   ],
   "interests": {

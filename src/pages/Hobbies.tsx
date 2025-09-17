@@ -124,7 +124,7 @@ export default function Hobbies() {
 
         <Grid container spacing={4} sx={{ mb: 6 }}>
           {hobbies.map((hobby) => (
-            <Grid>
+            <Grid key={hobby.title}>
               <HobbyCard elevation={2}>
                 <HobbyIcon>{hobby.icon}</HobbyIcon>
                 <HobbyTitle variant="h4">{hobby.title}</HobbyTitle>
