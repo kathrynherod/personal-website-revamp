@@ -1,18 +1,12 @@
-import { Box, styled } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
 import type { ReactNode } from "react";
 
-const PageContainer = styled("div")`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: center;
+const PageContainer = styled("section")`
   min-height: 100vh;
-  overflow: hidden;
   padding: ${({ theme }) => theme.spacing(4, 2)};
 `;
 
-const ContentWrapper = styled(Box)`
+const SectionWrapper = styled(Box)`
   max-width: 1200px;
   padding: 1rem 2rem;
   width: 100%;
@@ -21,16 +15,26 @@ const ContentWrapper = styled(Box)`
     padding: 2rem 4rem;
   }
 `;
+
+const SectionTile = styled(Typography)`
+  margin: ${({ theme }) => theme.spacing(2)} 0;
+`;
+
 export default function Layout({
   children,
   id,
+  sectionTitle,
 }: {
   children: ReactNode;
   id: string;
+  sectionTitle: string;
 }) {
   return (
-    <PageContainer>
-      <ContentWrapper id={id}>{children}</ContentWrapper>
+    <PageContainer id={id}>
+      <SectionWrapper>
+        <SectionTile variant="h2">{sectionTitle}</SectionTile>
+        {children}
+      </SectionWrapper>
     </PageContainer>
   );
 }

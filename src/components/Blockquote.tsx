@@ -1,33 +1,29 @@
-import { Paper, styled, Typography } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
 
-const BlockquoteContainer = styled(Paper)`
-  border-color: ${({ theme }) => theme.palette.primary.main};
-  border-left: 4px solid;
-  color: ${({ theme }) => theme.palette.text.secondary};
+const StyledBox = styled(Box)`
+  background-color: ${({ theme }) =>
+    theme.palette.mode === "light" ? "#f0f7ff" : "#0a1929"};
+  border-left: 4px solid
+    ${({ theme }) => (theme.palette.mode === "light" ? "#0a1929" : "#f0f7ff")};
+  border-radius: 8px;
   font-style: italic;
-  margin: ${({ theme }) => theme.spacing(2)};
-  padding: ${({ theme }) => theme.spacing(2)};
-  background-color: ${({ theme }) => theme.palette.background.paper};
+  margin: ${({ theme }) => theme.spacing(3, 0)};
+  padding: ${({ theme }) => theme.spacing(2, 3)};
+  width: 100%;
 `;
 
-type BlockquoteProps = {
-  children: React.ReactNode;
-  author?: string;
+type BlockQuoteProps = {
+  author: string;
+  testimonial: string;
 };
-
-export default function Blockquote(props: BlockquoteProps) {
-  const { children, author } = props;
-
+export default function BlockQuote({ author, testimonial }: BlockQuoteProps) {
   return (
-    <BlockquoteContainer>
-      <Typography component="blockquote" variant="body1" gutterBottom>
-        {children}
+    <StyledBox>
+      <Typography variant="body1">"{testimonial}"</Typography>
+
+      <Typography variant="body2" sx={{ mt: 1, fontWeight: 500 }}>
+        — {author}
       </Typography>
-      {author && (
-        <Typography variant="caption" display="block">
-          — {author}
-        </Typography>
-      )}
-    </BlockquoteContainer>
+    </StyledBox>
   );
 }

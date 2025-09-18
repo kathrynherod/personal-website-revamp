@@ -1,7 +1,9 @@
-import { Stack, styled, Typography } from "@mui/material";
+import { styled, Typography } from "@mui/material";
 
-const JumboH1Container = styled(Stack)`
+const JumboH1Container = styled("section")`
   align-items: center;
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
   justify-content: center;
   height: calc(100vh - ${({ theme }) => theme.mixins.toolbar.minHeight}px);
@@ -35,7 +37,7 @@ export default function Home() {
           herod
         </JumboH1>
         <SubtitleText variant="h2" color="secondary">
-          Software Engineer
+          Full-Stack Software Engineer
         </SubtitleText>
       </div>
     </JumboH1Container>

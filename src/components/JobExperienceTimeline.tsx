@@ -4,7 +4,6 @@ import React, { useRef, useState } from "react";
 import resumeData from "../assets/resume.json";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import type { Experience } from "../types/ResumeDataType";
-import Layout from "./Layout";
 
 const experienceData: Experience[] = resumeData.experience;
 
@@ -108,8 +107,8 @@ const MobileExperienceItem = ({ exp }: { exp: Experience }) => {
   return (
     <MobileExperienceDetails ref={ref} isVisible={isVisible}>
       <Box>
-        <JobTitle variant="h5">{exp.title}</JobTitle>
-        <DetailCompanyName variant="h6">{exp.company}</DetailCompanyName>
+        <JobTitle variant="h4">{exp.title}</JobTitle>
+        <DetailCompanyName variant="h5">{exp.company}</DetailCompanyName>
         <DetailDuration>
           {exp.duration} • {exp.location}
         </DetailDuration>
@@ -129,7 +128,7 @@ const MobileExperienceItem = ({ exp }: { exp: Experience }) => {
 const DesktopExperienceDetails = styled("div")`
   display: none;
   opacity: 0;
-  padding: 0.5rem;
+  padding: 1rem;
   transform: translateY(10px);
   transition: all 0.3s ease;
 
@@ -190,52 +189,46 @@ export default function JobExperienceTimeline() {
   const [activeExperience, setActiveExperience] = useState(experienceData[0]);
 
   return (
-    <Layout id="experience">
-      <Typography variant="h3" gutterBottom>
-        Experience
-      </Typography>
+    <ExperienceGrid>
+      <TimelineContentSection>
+        {experienceData.map((exp) => (
+          <React.Fragment key={exp.id}>
+            <TimelineItem
+              active={activeExperience.id === exp.id}
+              onClick={() => setActiveExperience(exp)}
+            >
+              <MobileTimelineMarker active={activeExperience.id === exp.id} />
 
-      <ExperienceGrid>
-        <TimelineContentSection>
-          {experienceData.map((exp) => (
-            <React.Fragment key={exp.id}>
-              <TimelineItem
-                active={activeExperience.id === exp.id}
-                onClick={() => setActiveExperience(exp)}
-              >
-                <MobileTimelineMarker active={activeExperience.id === exp.id} />
+              <TimelineContent>
+                <Duration>{exp.duration}</Duration>
+                <CompanyName>{exp.company}</CompanyName>
+              </TimelineContent>
+            </TimelineItem>
 
-                <TimelineContent>
-                  <Duration>{exp.duration}</Duration>
-                  <CompanyName>{exp.company}</CompanyName>
-                </TimelineContent>
-              </TimelineItem>
+            <MobileExperienceItem exp={exp} />
+          </React.Fragment>
+        ))}
+      </TimelineContentSection>
 
-              <MobileExperienceItem exp={exp} />
-            </React.Fragment>
+      <DesktopExperienceDetails>
+        <Box>
+          <JobTitle variant="h4">{activeExperience.title}</JobTitle>
+          <DetailCompanyName variant="h5">
+            {activeExperience.company}
+          </DetailCompanyName>
+          <DetailDuration>
+            {activeExperience.duration} • {activeExperience.location}
+          </DetailDuration>
+        </Box>
+
+        <Box>
+          {activeExperience.responsibilities.map((responsibility, index) => (
+            <ResponsibilityItem key={index} variant="body1">
+              {responsibility}
+            </ResponsibilityItem>
           ))}
-        </TimelineContentSection>
-
-        <DesktopExperienceDetails>
-          <Box>
-            <JobTitle variant="h5">{activeExperience.title}</JobTitle>
-            <DetailCompanyName variant="h6">
-              {activeExperience.company}
-            </DetailCompanyName>
-            <DetailDuration>
-              {activeExperience.duration} • {activeExperience.location}
-            </DetailDuration>
-          </Box>
-
-          <Box>
-            {activeExperience.responsibilities.map((responsibility, index) => (
-              <ResponsibilityItem key={index} variant="body1">
-                {responsibility}
-              </ResponsibilityItem>
-            ))}
-          </Box>
-        </DesktopExperienceDetails>
-      </ExperienceGrid>
-    </Layout>
+        </Box>
+      </DesktopExperienceDetails>
+    </ExperienceGrid>
   );
 }

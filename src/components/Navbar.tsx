@@ -2,6 +2,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Box,
+  Button,
   Divider,
   IconButton,
   Menu,
@@ -13,7 +14,7 @@ import {
 } from "@mui/material";
 import * as React from "react";
 
-import AppLogo from "./AppLogo";
+import darkLogo from "../assets/images/logo-dark.svg";
 import ThemeToggle from "./ThemeToggle";
 
 type NavbarPage = {
@@ -49,8 +50,20 @@ const DesktopMenuItems = styled(Box)`
   }
 `;
 
+const LogoButton = styled(Button)`
+  background: transparent;
+  border: none;
+  padding: 0;
+`;
+
+const StyledLogo = styled("img")`
+  height: auto;
+  transition: transform 0.2s ease;
+  width: 48px;
+`;
+
 const CustomMenuItemDivider = styled(Divider)`
-  background-color: ${(props) => props.theme.palette.secondary.main};
+  background-color: ${(props) => props.theme.palette.tertiary.main};
   height: 1rem;
   rotate: 15deg;
   width: 2px;
@@ -100,18 +113,9 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
   return (
     <AppBar position="sticky">
       <StyledToolbar>
-        <Box
-          component="button"
-          onClick={() => onNavigate("home")}
-          sx={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: 0,
-          }}
-        >
-          <AppLogo />
-        </Box>
+        <LogoButton onClick={() => onNavigate("home")}>
+          <StyledLogo src={darkLogo} alt="Kathryn Herod Logo" />
+        </LogoButton>
 
         <MobileMenuItems>
           <IconButton

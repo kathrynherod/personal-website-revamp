@@ -1,147 +1,91 @@
-import BuildIcon from "@mui/icons-material/Build";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import PetsIcon from "@mui/icons-material/Pets";
-import { Box, Grid, Paper, styled, Typography } from "@mui/material";
+import SquareFootIcon from "@mui/icons-material/SquareFoot";
+import { Stack } from "@mui/material";
 
-const HobbiesContainer = styled("div")`
-  min-height: 100vh;
-  padding: ${({ theme }) => theme.spacing(8, 2)};
-  background-color: ${({ theme }) => theme.palette.background.default};
-`;
+import FosterDogs from "../assets/images/foster-dogs.png";
+import MontessoriShelf from "../assets/images/montessori-shelf.png";
+import MurphyBed from "../assets/images/murphy-bed.png";
+import OliveByPool from "../assets/images/olive-by-pool.png";
+import PortiaByPool from "../assets/images/portia-by-pool.png";
+import HobbyItem from "../components/Hobbies/HobbyCard";
+import Layout from "../components/Layout";
 
-const SectionTitle = styled(Typography)`
-  margin-bottom: ${({ theme }) => theme.spacing(6)};
-  text-align: center;
-`;
-
-const HobbyCard = styled(Paper)`
-  padding: ${({ theme }) => theme.spacing(4)};
-  height: 100%;
-  background-color: ${({ theme }) => theme.palette.background.paper};
-  border-radius: 12px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: ${({ theme }) =>
-      theme.palette.mode === "light"
-        ? "0px 20px 40px rgba(1, 52, 77, 0.15)"
-        : "0px 20px 40px rgba(0, 0, 0, 0.3)"};
-  }
-`;
-
-const HobbyIcon = styled(Box)`
-  display: flex;
-  justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing(2)};
-
-  & svg {
-    font-size: 3rem;
-    color: ${({ theme }) => theme.palette.brand.limeGreen};
-  }
-`;
-
-const HobbyTitle = styled(Typography)`
-  text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing(2)};
-  font-weight: 800;
-`;
-
-const QuoteSection = styled(Box)`
-  text-align: center;
-  margin: ${({ theme }) => theme.spacing(8, 0)};
-  padding: ${({ theme }) => theme.spacing(4)};
-  background-color: ${({ theme }) => theme.palette.brand.darkBlue};
-  color: ${({ theme }) => theme.palette.brand.limeGreen};
-  border-radius: 12px;
-`;
-
-// const QuoteText = styled(Typography)`
-//   font-size: 2.5rem;
-//   font-style: italic;
-//   font-weight: 600;
-//   line-height: 1.3;
-
-//   &::before {
-//     content: ""
-//       ";
-//     font-size: 3rem;
-//     line-height: 0;
-//   }
-
-//   &::after {
-//     content: " "";
-//     font-size: 3rem;
-//     line-height: 0;
-//   }
-
-//   ${({ theme }) => theme.breakpoints.down("md")} {
-//     font-size: 1.75rem;
-
-//     &::before,
-//     &::after {
-//       font-size: 2rem;
-//     }
-//   }
-// `;
-
+export type Photo = {
+  src: string;
+  caption: string;
+};
+export type Hobby = {
+  title: string;
+  icon: React.ReactNode;
+  description: string[];
+  photos?: Photo[];
+};
 const hobbies = [
   {
     title: "German Shepherd Rescue",
     icon: <PetsIcon />,
-    description: `I'm passionate about German Shepherd rescue work and currently have two rescue dogs of my own.
-    These intelligent, loyal companions have taught me so much about patience, training, and unconditional love.
-    I volunteer with local rescue organizations to help find forever homes for these amazing dogs.
-    The work is incredibly rewarding, knowing that we're giving these dogs a second chance at happiness
-    while educating families about responsible pet ownership.`,
+    description: [
+      "My journey with dog rescue started over ten years ago when we were running our cooking school. We donated to the Greater Houston German Shepherd Dog Rescue for years before taking the leap to adopt our first German Shepherd in 2016, followed by another in 2019. These two amazing dogs opened our hearts to the incredible impact rescue work can have, and in 2020, we decided to try fostering for the first time. Watching that first foster dog find his perfect forever home was such a rewarding experience and we were hooked.",
+
+      "When I started volunteering to review applications and talk to potential adopters during COVID, I quickly realized how much the organization was struggling with outdated processes. Everything was still being done with paper forms, spreadsheets, and snail mail. I joined the board specifically to help streamline how we matched dogs with families and connected adopters with foster families. Using my tech background, I found software that could digitize all these processes and make everything more efficient. Getting everyone on board was not the easiest task, but the real work was in the transition. I ended up creating training videos and step-by-step guides to help all the volunteers learn the new system.",
+
+      "From there, I built custom scripts to automatically send weekly status emails about all the dogs currently in our care, and developed a standalone web app that gave everyone real-time access to this information. I also helped migrate the organization from an outdated, clunky website to WordPress, which allows everyone to update content themselves instead of relying on one tech-savvy person. What started as occasional fostering had evolved into completely revolutionizing how the rescue operates. Now everyone is empowered to do their work with so much less effort and we can just focus on saving more dogs.",
+    ],
+    photos: [
+      {
+        src: PortiaByPool,
+        caption: "Portia - Our first rescue (2016)",
+      },
+      {
+        src: OliveByPool,
+        caption: "Olive - Our second rescue (2019)",
+      },
+      {
+        src: FosterDogs,
+        caption: "Some of our foster dogs over the years",
+      },
+    ],
+  },
+
+  {
+    title: "Wood Working",
+    icon: <SquareFootIcon />,
+    description: [
+      "I got really into woodworking a few years ago when we bought our home. I had tackled small projects in the past, but I decided I needed a real challenge and needed a Murphy bed for my office. It turned out to be such a fantastic learning experience, and I get the satisfaction of seeing my masterpiece every single day when I'm working. ",
+      "More recently, I built Montessori shelves for my son's room. I love watching him use them to practice walking and play with his toys while standing. Seeing him interact with something I created (instead of purchasing) makes it so much more rewarding. ",
+      "My next project is likely going to be remodeling our pantry and building some beautiful floating shelves to go over the some new base cabinets.",
+    ],
+    photos: [
+      {
+        src: MontessoriShelf,
+        caption: "The Montessori shelf I built for my son",
+      },
+      {
+        src: MurphyBed,
+        caption: "The Murphy bed, shelves, and wainscotting in my office",
+      },
+    ],
   },
   {
     title: "French Horn",
     icon: <MusicNoteIcon />,
-    description: `Music has been a constant in my life, and the French Horn holds a special place in my heart.
-    There's something magical about the warm, rich tones this instrument produces. I've been playing for years
-    and continue to challenge myself with complex pieces. The discipline required to master the French Horn
-    has translated well into my approach to software development - both require patience, practice,
-    and attention to detail to achieve beautiful results.`,
-  },
-  {
-    title: "Wood Working",
-    icon: <BuildIcon />,
-    description: `Woodworking allows me to create something tangible with my hands, which provides a perfect
-    balance to the digital world of software development. I love the process of taking raw lumber and
-    transforming it into beautiful, functional pieces of furniture. Currently, I'm working on custom
-    built-ins for my home and learning trim carpentry. The precision required in woodworking mirrors
-    the attention to detail needed in coding - both require careful planning, precise execution,
-    and the patience to get things right.`,
+    description: [
+      "Music has been a constant in my life, and the French Horn holds a special place in my heart. There's something magical about the warm, rich tones this instrument produces. I've been playing for years and continue to challenge myself with complex pieces.",
+
+      "The discipline required to master the French Horn has translated well into my approach to software development - both require patience, practice, and attention to detail to achieve beautiful results.",
+    ],
   },
 ];
 
 export default function Hobbies() {
   return (
-    <HobbiesContainer id="hobbies">
-      <Box maxWidth="lg" sx={{ margin: "0 auto" }}>
-        <SectionTitle variant="h1">Hobbies</SectionTitle>
-
-        <Grid container spacing={4} sx={{ mb: 6 }}>
-          {hobbies.map((hobby) => (
-            <Grid key={hobby.title}>
-              <HobbyCard elevation={2}>
-                <HobbyIcon>{hobby.icon}</HobbyIcon>
-                <HobbyTitle variant="h4">{hobby.title}</HobbyTitle>
-                <Typography variant="body1" sx={{ lineHeight: 1.8 }}>
-                  {hobby.description}
-                </Typography>
-              </HobbyCard>
-            </Grid>
-          ))}
-        </Grid>
-
-        <QuoteSection>
-          {/* <QuoteText variant="h2" component="div">
-            The bad news is time flies. The good news is you're the pilot.
-          </QuoteText> */}
-        </QuoteSection>
-      </Box>
-    </HobbiesContainer>
+    <Layout id="hobbies" sectionTitle="Hobbies & Interests">
+      <Stack>
+        {hobbies.map((hobby, index) => (
+          <HobbyItem key={hobby.title} hobby={hobby} index={index} />
+        ))}
+      </Stack>
+    </Layout>
   );
 }

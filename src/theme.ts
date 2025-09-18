@@ -9,12 +9,18 @@ declare module "@mui/material/styles" {
       darkBlue: string;
       limeGreen: string;
     };
+    tertiary: {
+      main: string;
+    };
   }
 
   interface PaletteOptions {
     brand?: {
       darkBlue?: string;
       limeGreen?: string;
+    };
+    tertiary?: {
+      main?: string;
     };
   }
 }
@@ -71,15 +77,6 @@ const typography = {
 const baseTheme = {
   typography,
   spacing: 8,
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
 };
 
 export const lightTheme = createTheme({
@@ -92,8 +89,10 @@ export const lightTheme = createTheme({
     secondary: {
       main: "#002A3D",
     },
+    tertiary: {
+      main: limeGreen,
+    },
     background: {
-      default: limeGreen,
       paper: "#ffffff",
     },
     text: {
@@ -109,13 +108,11 @@ export const lightTheme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: limeGreen,
           color: darkBlue,
           boxShadow: "none",
-          backgroundImage: "none",
           transition: "background-color 0.5s ease, color 0.5s ease",
           "& *": {
-            color: darkBlue,
+            color: "#fff",
           },
         },
       },
@@ -126,13 +123,6 @@ export const lightTheme = createTheme({
           textTransform: "none",
           fontWeight: 600,
           borderRadius: "8px",
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          backgroundImage: "none",
         },
       },
     },
@@ -147,6 +137,9 @@ export const darkTheme = createTheme({
       main: "#ffffff",
     },
     secondary: {
+      main: limeGreen,
+    },
+    tertiary: {
       main: limeGreen,
     },
     background: {

@@ -118,9 +118,11 @@ export default function App() {
       <CssBaseline />
       <AppContainer>
         <Navbar activeSection={activeSection} onNavigate={scrollToSection} />
-        {sections.map((section) => (
-          <React.Fragment key={section.id}>{section.element}</React.Fragment>
-        ))}
+        <main>
+          {sections.map((section) => (
+            <React.Fragment key={section.id}>{section.element}</React.Fragment>
+          ))}
+        </main>
       </AppContainer>
     </ThemeProvider>
   );

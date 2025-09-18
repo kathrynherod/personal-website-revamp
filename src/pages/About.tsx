@@ -1,25 +1,26 @@
-import { Box, Paper, styled, Typography } from "@mui/material";
+import { Box, Paper, styled, Typography, useMediaQuery } from "@mui/material";
 
 import KathrynAndOlive from "../assets/images/kathryn-and-olive.png";
+import BlockQuote from "../components/BlockQuote";
 import Layout from "../components/Layout";
 
 const ContentGrid = styled(Box)`
+  align-items: start;
   display: grid;
-  grid-template-columns: 1fr;
+  gap: 2rem;
   grid-template-areas:
     "text"
     "full"
     "image";
-  gap: 2rem;
+  grid-template-columns: 1fr;
   row-gap: 1rem;
-  align-items: start;
 
   ${({ theme }) => theme.breakpoints.up("md")} {
-    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
     grid-template-areas:
       "text image"
       "full full";
-    gap: 3rem;
+    grid-template-columns: 2fr 1fr;
     row-gap: 1rem;
   }
 `;
@@ -67,13 +68,10 @@ const StyledImage = styled("img")`
 `;
 
 export default function About() {
-  return (
-    <Layout id="about">
-      <Typography variant="h3" gutterBottom></Typography>
-      <Typography variant="h2" gutterBottom>
-        About Me
-      </Typography>
+  const isWideScreen = useMediaQuery("(min-width:1000px)");
 
+  return (
+    <Layout id="about" sectionTitle="About Me">
       <ContentGrid>
         <TextSection>
           <Typography variant="body1">
@@ -113,6 +111,12 @@ export default function About() {
             piece of custom furniture, a perfect loaf of sourdough, or clean,
             efficient code.
           </Typography>
+          {isWideScreen && (
+            <BlockQuote
+              testimonial="With tests, we can change the behavior of our code quickly and verifiably. Without them, we really don’t know if our code is getting better or worse."
+              author="Michael Feathers"
+            />
+          )}
         </FullWidthSection>
       </ContentGrid>
     </Layout>

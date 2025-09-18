@@ -16,7 +16,7 @@
     {
       "id": 1,
       "title": "Senior Software Engineer",
-      "company": "Ask Me",
+      "company": "Current Company",
       "location": "Remote",
       "duration": "Mar 2023 – Present",
       "responsibilities": [
@@ -90,108 +90,116 @@
       ]
     }
   ],
-  "skills": {
-    "technical": [
-      {
-        "title": "Backend & Database",
-        "skills": [
-          "C#",
-          ".NET",
-          "ASP.NET",
-          "ASP.NET Razor",
-          "Java",
-          "Groovy",
-          "Node.js",
-          "Express.js",
-          "REST APIs",
-          "SQL",
-          "PostgreSQL",
-          "MongoDB"
-        ]
-      },
-      {
-        "title": "Frontend & Styling",
-        "skills": [
-          "TypeScript",
-          "JavaScript",
-          "React.js",
-          "Angular",
-          "HTML5",
-          "CSS3",
-          "MUI",
-          "Redux",
-          "Responsive Design",
-          "JavaFX",
-          "Bootstrap",
-          "SASS",
-          "Ember.js"
-        ]
-      },
-      {
-        "title": "Tools & Platforms",
-        "skills": [
-          "Git",
-          "Azure DevOps",
-          "Docker",
-          "AWS",
-          "CI/CD",
-          "Heroku"
-        ]
-      },
-      {
-        "title": "Testing",
-        "skills": [
-          "xUnit",
-          "Moq",
-          "Jest",
-          "Vitest",
-          "Cypress",
-          "Mirage",
-          "MSW",
-          "Faker.js",
-          "QUnit"
-        ]
-      },
-      {
-        "title": "E-commerce & SEO",
-        "skills": [
-          "Authorize.net APIs",
-          "PCI Compliance",
-          "SEO Optimization",
-          "Full-stack E-commerce Development"
-        ]
-      }
-    ],
-    "soft": [
-      {
-        "title": "Leadership & Management",
-        "skills": [
-          "Engineering Team Leadership",
-          "Technical Mentoring",
-          "Business Management",
-          "Cross-functional Team Management"
-        ]
-      },
-      {
-        "title": "Process & Methodology",
-        "skills": [
-          "Agile Methodologies",
-          "Scrum Master (Certified)",
-          "Design Thinking Facilitation",
-          "Test-Driven Development Implementation"
-        ]
-      },
-      {
-        "title": "Communication & Collaboration",
-        "skills": [
-          "Requirements Gathering",
-          "Stakeholder Collaboration",
-          "Technical Documentation",
-          "Design Thinking Workshops"
-        ]
-      }
-    ]
-  },
+  "skills": [
+    {
+      "id": 1,
+      "title": "Technical Skills",
+      "categories": [
+        {
+          "title": "Backend & Database",
+          "skills": [
+            "C#",
+            ".NET",
+            "ASP.NET",
+            "ASP.NET Razor",
+            "Java",
+            "Groovy",
+            "Node.js",
+            "Express.js",
+            "REST APIs",
+            "SQL",
+            "PostgreSQL",
+            "MongoDB"
+          ]
+        },
+        {
+          "title": "Frontend & Styling",
+          "skills": [
+            "TypeScript",
+            "JavaScript",
+            "React.js",
+            "Angular",
+            "HTML5",
+            "CSS3",
+            "MUI",
+            "Redux",
+            "Responsive Design",
+            "JavaFX",
+            "Bootstrap",
+            "SASS",
+            "Ember.js"
+          ]
+        },
+        {
+          "title": "Tools & Platforms",
+          "skills": [
+            "Git",
+            "Azure DevOps",
+            "Docker",
+            "AWS",
+            "CI/CD",
+            "Heroku"
+          ]
+        },
+        {
+          "title": "Testing",
+          "skills": [
+            "xUnit",
+            "Moq",
+            "Jest",
+            "Vitest",
+            "Cypress",
+            "Mirage",
+            "MSW",
+            "Faker.js",
+            "QUnit"
+          ]
+        },
+        {
+          "title": "E-commerce & SEO",
+          "skills": [
+            "Authorize.net APIs",
+            "PCI Compliance",
+            "SEO Optimization",
+            "Full-stack E-commerce Development"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Soft Skills",
+      "categories": [
+        {
+          "title": "Leadership & Management",
+          "skills": [
+            "Engineering Team Leadership",
+            "Technical Mentoring",
+            "Business Management",
+            "Cross-functional Team Management"
+          ]
+        },
+        {
+          "title": "Process & Methodology",
+          "skills": [
+            "Agile Methodologies",
+            "Scrum Master (Certified)",
+            "Design Thinking Facilitation",
+            "Test-Driven Development Implementation"
+          ]
+        },
+        {
+          "title": "Communication & Collaboration",
+          "skills": [
+            "Requirements Gathering",
+            "Stakeholder Collaboration",
+            "Technical Documentation",
+            "Design Thinking Workshops"
+          ]
+        }
+      ]
+    }
+  ],
   "education": [
     {
       "id": 1,
