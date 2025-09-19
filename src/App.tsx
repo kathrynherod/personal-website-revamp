@@ -1,6 +1,7 @@
 import { CssBaseline, styled, ThemeProvider } from "@mui/material";
 import React, { type ReactNode, useEffect, useRef, useState } from "react";
 
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { useIntersectionObserver } from "./hooks/useIntersectionObserver";
 import { useThemeMode } from "./hooks/useThemeMode";
@@ -123,6 +124,7 @@ export default function App() {
             <React.Fragment key={section.id}>{section.element}</React.Fragment>
           ))}
         </main>
+        <Footer />
       </AppContainer>
     </ThemeProvider>
   );

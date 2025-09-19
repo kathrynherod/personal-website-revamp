@@ -71,9 +71,7 @@ const hobbies = [
     title: "French Horn",
     icon: <MusicNoteIcon />,
     description: [
-      "Music has been a constant in my life, and the French Horn holds a special place in my heart. There's something magical about the warm, rich tones this instrument produces. I've been playing for years and continue to challenge myself with complex pieces.",
-
-      "The discipline required to master the French Horn has translated well into my approach to software development - both require patience, practice, and attention to detail to achieve beautiful results.",
+      "I've been playing French Horn for over 25 years, and it remains one of my greatest passions. When my schedule allows, I love joining local orchestras and community ensembles.",
     ],
   },
 ];
