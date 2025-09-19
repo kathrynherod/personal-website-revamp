@@ -12,11 +12,11 @@ const StyledBox = styled(Box)`
   width: 100%;
 `;
 
-type BlockQuoteProps = {
+type QuoteBlockProps = {
   author: string;
   testimonial: string;
 };
-export default function BlockQuote({ author, testimonial }: BlockQuoteProps) {
+export default function QuoteBlock({ author, testimonial }: QuoteBlockProps) {
   return (
     <StyledBox>
       <Typography variant="body1">"{testimonial}"</Typography>

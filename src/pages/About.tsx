@@ -1,8 +1,8 @@
 import { Box, Paper, styled, Typography, useMediaQuery } from "@mui/material";
 
 import KathrynAndOlive from "../assets/images/kathryn-and-olive.png";
-import BlockQuote from "../components/BlockQuote";
 import Layout from "../components/Layout";
+import QuoteBlock from "../components/QuoteBlock";
 
 const ContentGrid = styled(Box)`
   align-items: start;
@@ -112,7 +112,7 @@ export default function About() {
             efficient code.
           </Typography>
           {isWideScreen && (
-            <BlockQuote
+            <QuoteBlock
               testimonial="With tests, we can change the behavior of our code quickly and verifiably. Without them, we really don’t know if our code is getting better or worse."
               author="Michael Feathers"
             />
