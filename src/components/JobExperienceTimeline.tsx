@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import resumeData from "../assets/resume.json";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import type { Experience } from "../types/ResumeDataType";
+import { AnimatedBox } from "./shared/AnimatedBox";
 
 const experienceData: Experience[] = resumeData.experience;
 
@@ -14,7 +15,6 @@ const ExperienceGrid = styled(Box)`
   margin-top: 2rem;
 
   ${({ theme }) => theme.breakpoints.up("md")} {
-    gap: 1rem;
     grid-template-columns: 300px 1fr;
   }
 `;
@@ -28,15 +28,18 @@ const TimelineContentSection = styled(Box)`
   }
 `;
 
-const TimelineItem = styled(Box, {
+const TimelineMarkerBase = styled(Box, {
   shouldForwardProp: (prop) => prop !== "active",
-})<{ active: boolean }>`
+})`
+  transition: all 0.3s ease;
+`;
+
+const TimelineItem = styled(TimelineMarkerBase)<{ active: boolean }>`
   cursor: pointer;
   display: none;
   height: 80px;
   margin-bottom: 0.5rem;
   padding: 1rem;
-  transition: all 0.3s ease;
 
   ${({ theme }) => theme.breakpoints.up("md")} {
     border-left: 4px solid
@@ -51,9 +54,7 @@ const TimelineItem = styled(Box, {
   }
 `;
 
-const MobileTimelineMarker = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "active",
-})<{ active: boolean }>`
+const MobileTimelineMarker = styled(TimelineMarkerBase)<{ active: boolean }>`
   background-color: ${({ active, theme }) =>
     active ? theme.palette.primary.main : theme.palette.grey[400]};
   border: 3px solid white;
@@ -63,7 +64,6 @@ const MobileTimelineMarker = styled(Box, {
   flex-shrink: 0;
   height: 12px;
   margin-right: 1rem;
-  transition: all 0.3s ease;
   width: 12px;
 
   ${({ theme }) => theme.breakpoints.up("md")} {
@@ -79,14 +79,8 @@ const TimelineContent = styled(Box)`
   justify-content: center;
 `;
 
-const MobileExperienceDetails = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "isVisible",
-})<{ isVisible: boolean }>`
+const MobileExperienceDetails = styled(AnimatedBox)`
   margin-bottom: 3rem;
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transform: ${({ isVisible }) =>
-    isVisible ? "translateY(0)" : "translateY(30px)"};
-  transition: all 0.6s ease;
 
   &:last-child {
     margin-bottom: 0;

@@ -50,13 +50,13 @@ export type PersonalInfo = {
 };
 
 export type Skill = {
+  categories: SkillCategory[];
   id: number;
   title: string;
-  categories: SkillCategory[];
 };
 export type SkillCategory = {
-  title: string;
   skills: string[];
+  title: string;
 };
 
 export type Theme = {

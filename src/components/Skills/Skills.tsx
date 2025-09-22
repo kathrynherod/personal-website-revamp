@@ -14,12 +14,10 @@ const SkillCategoriesGrid = styled(Box)`
   margin-top: 2rem;
 
   ${({ theme }) => theme.breakpoints.up("md")} {
-    gap: 2rem;
     grid-template-columns: 1fr 1fr;
   }
 
   ${({ theme }) => theme.breakpoints.up("lg")} {
-    gap: 2rem;
     grid-template-columns: 1fr 1fr 1fr;
   }
 `;

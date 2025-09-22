@@ -1,18 +1,13 @@
 import { Box, styled, Typography } from "@mui/material";
 import { useRef } from "react";
 
+import { INTERSECTION_OBSERVER_CONFIG } from "../../constants/intersectionObserver";
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import type { SkillCategory } from "../../types/ResumeDataType";
+import { AnimatedBox } from "../shared/AnimatedBox";
 import SkillChip from "./SkillChip";
 
-const SkillCategoryCard = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "isVisible",
-})<{ isVisible: boolean }>`
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transform: ${({ isVisible }) =>
-    isVisible ? "translateY(0)" : "translateY(30px)"};
-  transition: all 0.6s ease;
-`;
+const SkillCategoryCard = AnimatedBox;
 
 const CategoryTitle = styled(Typography)`
   color: ${({ theme }) => theme.palette.primary.main};
@@ -28,10 +23,7 @@ const SkillChipsContainer = styled(Box)`
 
 export default function SkillCategoryItem({ title, skills }: SkillCategory) {
   const ref = useRef<HTMLDivElement>(null);
-  const isVisible = useIntersectionObserver(ref, {
-    threshold: 0.2,
-    rootMargin: "0px 0px -50px 0px",
-  });
+  const isVisible = useIntersectionObserver(ref, INTERSECTION_OBSERVER_CONFIG);
 
   return (
     <SkillCategoryCard ref={ref} isVisible={isVisible}>

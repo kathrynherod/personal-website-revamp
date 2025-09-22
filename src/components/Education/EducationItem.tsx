@@ -1,17 +1,12 @@
-import { Box, styled, Typography } from "@mui/material";
+import { styled, Typography } from "@mui/material";
 import { useRef } from "react";
 
+import { INTERSECTION_OBSERVER_CONFIG } from "../../constants/intersectionObserver";
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import type { Education } from "../../types/ResumeDataType";
+import { AnimatedBox } from "../shared/AnimatedBox";
 
-const EducationCard = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "isVisible",
-})<{ isVisible: boolean }>`
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transform: ${({ isVisible }) =>
-    isVisible ? "translateY(0)" : "translateY(30px)"};
-  transition: all 0.6s ease;
-`;
+const EducationCard = AnimatedBox;
 
 const DegreeTitle = styled(Typography)`
   color: ${({ theme }) => theme.palette.text.primary};
@@ -31,10 +26,7 @@ const EducationYear = styled(Typography)`
 
 export default function EducationItem({ edu }: { edu: Education }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isVisible = useIntersectionObserver(ref, {
-    threshold: 0.2,
-    rootMargin: "0px 0px -50px 0px",
-  });
+  const isVisible = useIntersectionObserver(ref, INTERSECTION_OBSERVER_CONFIG);
 
   return (
     <EducationCard ref={ref} isVisible={isVisible}>

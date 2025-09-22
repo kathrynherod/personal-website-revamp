@@ -1,7 +1,7 @@
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Box, IconButton, styled, Typography } from "@mui/material";
+import { Box, IconButton, Stack, styled, Typography } from "@mui/material";
 
 const FooterContainer = styled(Box)`
   background-color: ${({ theme }) => theme.palette.background.paper};
@@ -10,18 +10,11 @@ const FooterContainer = styled(Box)`
   padding: ${({ theme }) => theme.spacing(4, 2)};
 ` as typeof Box;
 
-const FooterContent = styled(Box)`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+const FooterContent = styled(Stack)`
   align-items: center;
   gap: ${({ theme }) => theme.spacing(3)};
-
-  ${({ theme }) => theme.breakpoints.up("md")} {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  margin: 0 auto;
+  max-width: 1200px;
 `;
 
 const SocialLinks = styled(Box)`
@@ -35,6 +28,10 @@ const SocialIconButton = styled(IconButton)`
   & svg {
     font-size: 1.5rem;
   }
+
+  :hover {
+    border-bottom: none;
+  }
 ` as typeof IconButton;
 
 const FooterText = styled(Typography)`
@@ -43,17 +40,6 @@ const FooterText = styled(Typography)`
 
   ${({ theme }) => theme.breakpoints.up("md")} {
     text-align: left;
-  }
-`;
-
-const ContactInfo = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing(1)};
-
-  ${({ theme }) => theme.breakpoints.up("md")} {
-    align-items: flex-end;
   }
 `;
 
@@ -98,15 +84,6 @@ export default function Footer() {
             <EmailIcon />
           </SocialIconButton>
         </SocialLinks>
-
-        <ContactInfo>
-          <Typography variant="body2" color="text.secondary">
-            Katy, Texas
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Available for new opportunities
-          </Typography>
-        </ContactInfo>
       </FooterContent>
     </FooterContainer>
   );

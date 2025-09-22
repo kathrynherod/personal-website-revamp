@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import * as React from "react";
 
-import darkLogo from "../assets/images/logo-dark.svg";
+import KHLogo from "../assets/images/kh-logo.svg";
 import ThemeToggle from "./ThemeToggle";
 
 type NavbarPage = {
@@ -44,8 +44,8 @@ const DesktopMenuItems = styled(Box)`
   display: none;
 
   ${({ theme }) => theme.breakpoints.up("sm")} {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
   }
 `;
@@ -114,7 +114,7 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
     <AppBar position="sticky">
       <StyledToolbar>
         <LogoButton onClick={() => onNavigate("home")}>
-          <StyledLogo src={darkLogo} alt="Kathryn Herod Logo" />
+          <StyledLogo src={KHLogo} alt="Kathryn Herod Logo" />
         </LogoButton>
 
         <MobileMenuItems>

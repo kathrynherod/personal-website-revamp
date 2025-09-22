@@ -1,5 +1,5 @@
 import { CssBaseline, styled, ThemeProvider } from "@mui/material";
-import React, { type ReactNode, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -10,6 +10,7 @@ import Experience from "./pages/Experience";
 import Hobbies from "./pages/Hobbies";
 import Home from "./pages/Home";
 import { darkTheme, lightTheme } from "./theme";
+import type { AppSection } from "./types/AppTypes";
 
 const AppContainer = styled("div")`
   background-color: ${(props) => props.theme.palette.background.default};
@@ -19,12 +20,6 @@ const AppContainer = styled("div")`
     background-color 0.5s ease,
     color 0.5s ease;
 `;
-
-type AppSection = {
-  element: ReactNode;
-  id: string;
-  name: string;
-};
 
 const sections: AppSection[] = [
   {

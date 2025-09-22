@@ -1,7 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Dialog, DialogContent, IconButton, styled } from "@mui/material";
 
-import type { Photo } from "../../pages/Hobbies";
+import type { Photo } from "../../types/HobbiesTypes";
 
 const StyledDialog = styled(Dialog)`
   & .MuiDialog-paper {
@@ -18,8 +18,8 @@ const DialogContentContainer = styled(DialogContent)`
 const CloseButton = styled(IconButton)`
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  right: 8px;
   position: absolute;
+  right: 8px;
   top: 8px;
   z-index: 1;
 
@@ -35,9 +35,9 @@ const FullSizeImage = styled("img")`
 `;
 
 type PhotoDialogProps = {
+  onClose: () => void;
   open: boolean;
   photo: Photo | null;
-  onClose: () => void;
 };
 
 export default function PhotoDialog({

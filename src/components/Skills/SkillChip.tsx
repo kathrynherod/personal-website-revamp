@@ -22,9 +22,8 @@ const StyledChip = styled(Chip)`
     left: -100%;
     position: absolute;
     top: 0;
-    width: 100%;
-
     transition: left 0.4s ease;
+    width: 100%;
   }
 
   &:hover {
@@ -59,20 +58,20 @@ const StyledChip = styled(Chip)`
   }
 `;
 type SkillChipProps = {
-  skill: string;
   index: number;
   isVisible: boolean;
+  skill: string;
 };
 
 export default function SkillChip({ skill, index, isVisible }: SkillChipProps) {
   return (
     <StyledChip
-      label={skill}
-      variant="outlined"
       className={isVisible ? "animate-in" : ""}
+      label={skill}
       style={{
         animationDelay: `${index * 0.1}s`,
       }}
+      variant="outlined"
     />
   );
 }

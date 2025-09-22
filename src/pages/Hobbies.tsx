@@ -10,26 +10,15 @@ import OliveByPool from "../assets/images/olive-by-pool.png";
 import PortiaByPool from "../assets/images/portia-by-pool.png";
 import HobbyItem from "../components/Hobbies/HobbyCard";
 import Layout from "../components/Layout";
+import type { Hobby } from "../types/HobbiesTypes";
 
-export type Photo = {
-  src: string;
-  caption: string;
-};
-export type Hobby = {
-  title: string;
-  icon: React.ReactNode;
-  description: string[];
-  photos?: Photo[];
-};
-const hobbies = [
+const hobbies: Hobby[] = [
   {
     title: "German Shepherd Rescue",
     icon: <PetsIcon />,
     description: [
       "My journey with dog rescue started over ten years ago when we were running our cooking school. We donated to the Greater Houston German Shepherd Dog Rescue for years before taking the leap to adopt our first German Shepherd in 2016, followed by another in 2019. These two amazing dogs opened our hearts to the incredible impact rescue work can have, and in 2020, we decided to try fostering for the first time. Watching that first foster dog find his perfect forever home was such a rewarding experience and we were hooked.",
-
       "When I started volunteering to review applications and talk to potential adopters during COVID, I quickly realized how much the organization was struggling with outdated processes. Everything was still being done with paper forms, spreadsheets, and snail mail. I joined the board specifically to help streamline how we matched dogs with families and connected adopters with foster families. Using my tech background, I found software that could digitize all these processes and make everything more efficient. Getting everyone on board was not the easiest task, but the real work was in the transition. I ended up creating training videos and step-by-step guides to help all the volunteers learn the new system.",
-
       "From there, I built custom scripts to automatically send weekly status emails about all the dogs currently in our care, and developed a standalone web app that gave everyone real-time access to this information. I also helped migrate the organization from an outdated, clunky website to WordPress, which allows everyone to update content themselves instead of relying on one tech-savvy person. What started as occasional fostering had evolved into completely revolutionizing how the rescue operates. Now everyone is empowered to do their work with so much less effort and we can just focus on saving more dogs.",
     ],
     photos: [

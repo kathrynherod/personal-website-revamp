@@ -21,7 +21,6 @@ const ContentGrid = styled(Box)`
       "text image"
       "full full";
     grid-template-columns: 2fr 1fr;
-    row-gap: 1rem;
   }
 `;
 

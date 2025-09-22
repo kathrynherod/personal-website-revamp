@@ -4,25 +4,18 @@ import { Box, Button, styled, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
-import type { Hobby, Photo } from "../../pages/Hobbies";
+import type { Hobby, Photo } from "../../types/HobbiesTypes";
+import { AnimatedBox } from "../shared/AnimatedBox";
 import PhotoDialog from "./PhotoDialog";
-
-const AnimatedElement = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "isVisible",
-})<{ isVisible?: boolean }>`
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transform: ${({ isVisible }) =>
-    isVisible ? "translateY(0)" : "translateY(20px)"};
-  transition: all 0.5s ease;
-`;
+import PhotoItem from "./PhotoItem";
 
 const HobbyCard = styled(Box)`
   margin-top: ${({ theme }) => theme.spacing(3)};
 `;
 
-const HobbyHeader = styled(AnimatedElement)`
-  display: flex;
+const HobbyHeader = styled(AnimatedBox)`
   align-items: center;
+  display: flex;
   gap: ${({ theme }) => theme.spacing(1.5)};
   margin-bottom: ${({ theme }) => theme.spacing(2)};
 
@@ -37,12 +30,12 @@ const HobbyTitle = styled(Typography)`
   font-weight: 700;
 ` as typeof Typography;
 
-const HobbyDescription = styled(AnimatedElement.withComponent(Typography))`
+const HobbyDescription = styled(AnimatedBox.withComponent(Typography))`
   line-height: 1.7;
   text-align: left;
 `;
 
-const PhotoGallery = styled(AnimatedElement)`
+const PhotoGallery = styled(Box)`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
@@ -57,37 +50,10 @@ const PhotoGallery = styled(AnimatedElement)`
   }
 `;
 
-const PhotoContainer = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-const PhotoImage = styled("img")`
-  aspect-ratio: 1;
-  border: 2px solid ${({ theme }) => theme.palette.primary.main}20;
-  border-radius: 8px;
-  cursor: pointer;
-  object-fit: cover;
-  transition: all 0.3s ease;
-  width: 100%;
-
-  &:hover {
-    border-color: ${({ theme }) => theme.palette.primary.main}60;
-  }
-`;
-
-const PhotoCaption = styled(Typography)`
-  font-size: 0.8rem;
-  color: ${({ theme }) => theme.palette.text.secondary};
-  text-align: center;
-  font-style: italic;
-`;
-
 const ExpandButton = styled(Button)`
+  font-weight: 500;
   margin-top: ${({ theme }) => theme.spacing(2)};
   text-transform: none;
-  font-weight: 500;
 
   &:hover {
     background-color: ${({ theme }) => theme.palette.primary.main}08;
@@ -102,7 +68,6 @@ export default function HobbyItem({
   index: number;
 }) {
   const headerRef = useRef<HTMLDivElement>(null);
-  const photosRef = useRef<HTMLDivElement>(null);
   const [paragraphVisibility, setParagraphVisibility] = useState<boolean[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -111,15 +76,7 @@ export default function HobbyItem({
     rootMargin: "0px 0px -50px 0px",
   });
 
-  const photosVisible = useIntersectionObserver(photosRef, {
-    threshold: 0.2,
-    rootMargin: "0px 0px -50px 0px",
-  });
-
-  // Set up intersection observers for paragraphs
   useEffect(() => {
-    if (!Array.isArray(hobby.description)) return;
-
     const observers: IntersectionObserver[] = [];
     const elements = document.querySelectorAll(
       `[data-hobby-paragraph="${hobby.title}"]`
@@ -179,79 +136,64 @@ export default function HobbyItem({
         role="region"
         aria-labelledby={`hobby-title-${hobby.title.replace(/\s+/g, "-").toLowerCase()}`}
       >
-        {Array.isArray(hobby.description) ? (
-          <>
-            {hobby.description
-              .slice(0, isExpanded ? hobby.description.length : 1)
-              .map((paragraph, paragraphIndex) => (
-                <HobbyDescription
-                  key={paragraphIndex}
-                  data-hobby-paragraph={hobby.title}
-                  isVisible={
-                    paragraphIndex === 0
-                      ? paragraphVisibility[paragraphIndex] || false
-                      : isExpanded
-                  }
-                  variant="body1"
-                  sx={{ mb: 2 }}
-                  style={{
-                    transitionDelay: `${index * 0.1 + (paragraphIndex + 1) * 0.2}s`,
-                  }}
-                >
-                  {paragraph}
-                </HobbyDescription>
-              ))}
+        {hobby.description
+          .slice(0, isExpanded ? hobby.description.length : 1)
+          .map((paragraph, paragraphIndex) => (
+            <HobbyDescription
+              key={paragraphIndex}
+              data-hobby-paragraph={hobby.title}
+              isVisible={
+                paragraphIndex === 0
+                  ? paragraphVisibility[paragraphIndex] || false
+                  : isExpanded
+              }
+              variant="body1"
+              sx={{ mb: 2 }}
+              style={{
+                transitionDelay: `${index * 0.1 + (paragraphIndex + 1) * 0.2}s`,
+              }}
+            >
+              {paragraph}
+            </HobbyDescription>
+          ))}
 
-            {!isExpanded && hobby.description.length > 1 && (
-              <ExpandButton
-                onClick={() => setIsExpanded(true)}
-                aria-expanded="false"
-                aria-controls={`hobby-content-${hobby.title.replace(/\s+/g, "-").toLowerCase()}`}
-                startIcon={<ExpandMoreIcon />}
-                variant="text"
-                color="primary"
-              >
-                Continue reading about {hobby.title.toLowerCase()}
-              </ExpandButton>
-            )}
+        {!isExpanded && hobby.description.length > 1 && (
+          <ExpandButton
+            onClick={() => setIsExpanded(true)}
+            aria-expanded="false"
+            aria-controls={`hobby-content-${hobby.title.replace(/\s+/g, "-").toLowerCase()}`}
+            startIcon={<ExpandMoreIcon />}
+            variant="text"
+            color="primary"
+          >
+            Continue reading about {hobby.title.toLowerCase()}
+          </ExpandButton>
+        )}
 
-            {isExpanded && hobby.description.length > 1 && (
-              <ExpandButton
-                onClick={() => setIsExpanded(false)}
-                aria-expanded="true"
-                aria-controls={`hobby-content-${hobby.title.replace(/\s+/g, "-").toLowerCase()}`}
-                startIcon={<ExpandLessIcon />}
-                variant="text"
-                color="primary"
-              >
-                Show less
-              </ExpandButton>
-            )}
-          </>
-        ) : (
-          <HobbyDescription variant="body1">
-            {hobby.description}
-          </HobbyDescription>
+        {isExpanded && hobby.description.length > 1 && (
+          <ExpandButton
+            onClick={() => setIsExpanded(false)}
+            aria-expanded="true"
+            aria-controls={`hobby-content-${hobby.title.replace(/\s+/g, "-").toLowerCase()}`}
+            startIcon={<ExpandLessIcon />}
+            variant="text"
+            color="primary"
+          >
+            Show less
+          </ExpandButton>
         )}
       </Box>
 
       {hobby.photos && (
-        <PhotoGallery
-          ref={photosRef}
-          isVisible={photosVisible}
-          style={{
-            transitionDelay: `${index * 0.1 + (hobby.description.length + 1) * 0.2}s`,
-          }}
-        >
+        <PhotoGallery>
           {hobby.photos.map((photo, photoIndex) => (
-            <PhotoContainer key={photoIndex}>
-              <PhotoImage
-                src={photo.src}
-                alt={photo.caption}
-                onClick={() => handlePhotoClick(photo)}
-              />
-              <PhotoCaption variant="caption">{photo.caption}</PhotoCaption>
-            </PhotoContainer>
+            <PhotoItem
+              key={photoIndex}
+              photo={photo}
+              index={photoIndex}
+              baseDelay={index * 0.1 + (hobby.description.length + 1) * 0.2}
+              onPhotoClick={handlePhotoClick}
+            />
           ))}
         </PhotoGallery>
       )}
