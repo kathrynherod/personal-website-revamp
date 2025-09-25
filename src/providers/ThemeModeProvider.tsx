@@ -1,19 +1,19 @@
 import type { PaletteMode } from "@mui/material";
-import { type ReactNode,useCallback, useEffect, useState } from "react";
+import { type ReactNode, useCallback, useEffect, useState } from "react";
 
 import { ThemeModeContext } from "../contexts/ThemeModeContext";
 
 export const ThemeModeProvider = ({ children }: { children: ReactNode }) => {
   const [themeMode, setThemeMode] = useState<PaletteMode>(() => {
     const storedMode = localStorage.getItem("themeMode");
-    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+    const prefersLightMode = window.matchMedia("(prefers-color-scheme: light)");
 
     if (storedMode) {
       return storedMode as PaletteMode;
-    } else if (prefersDarkMode.matches) {
-      return "dark";
+    } else if (prefersLightMode.matches) {
+      return "light";
     }
-    return "light";
+    return "dark";
   });
 
   useEffect(() => {

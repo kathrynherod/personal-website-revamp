@@ -86,7 +86,6 @@ export default function App() {
     }
   });
 
-  // Update active section based on visibility
   useEffect(() => {
     if (isHomeVisible) {
       setActiveSection("home");
