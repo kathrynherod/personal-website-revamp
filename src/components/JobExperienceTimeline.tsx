@@ -1,10 +1,9 @@
+import resumeData from "@assets/resume.json";
 import { Box, styled, Typography } from "@mui/material";
-import React, { useRef, useState } from "react";
+import type { Experience } from "@types";
+import React, { useState } from "react";
 
-import resumeData from "../assets/resume.json";
-import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
-import type { Experience } from "../types/ResumeDataType";
-import { AnimatedBox } from "./shared/AnimatedBox";
+import MobileExperienceItem from "./JobExperienceTimeline/MobileExperienceItem";
 
 const experienceData: Experience[] = resumeData.experience;
 
@@ -79,46 +78,6 @@ const TimelineContent = styled(Box)`
   justify-content: center;
 `;
 
-const MobileExperienceDetails = styled(AnimatedBox)`
-  margin-bottom: 3rem;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  ${({ theme }) => theme.breakpoints.up("md")} {
-    display: none;
-  }
-`;
-
-const MobileExperienceItem = ({ exp }: { exp: Experience }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isVisible = useIntersectionObserver(ref, {
-    threshold: 0.2,
-    rootMargin: "0px 0px -50px 0px",
-  });
-
-  return (
-    <MobileExperienceDetails ref={ref} isVisible={isVisible}>
-      <Box>
-        <JobTitle variant="h4">{exp.title}</JobTitle>
-        <DetailCompanyName variant="h5">{exp.company}</DetailCompanyName>
-        <DetailDuration>
-          {exp.duration} • {exp.location}
-        </DetailDuration>
-      </Box>
-
-      <Box>
-        {exp.responsibilities.map((responsibility: string, index: number) => (
-          <ResponsibilityItem key={index} variant="body1">
-            {responsibility}
-          </ResponsibilityItem>
-        ))}
-      </Box>
-    </MobileExperienceDetails>
-  );
-};
-
 const DesktopExperienceDetails = styled("div")`
   display: none;
   opacity: 0;
@@ -190,12 +149,20 @@ export default function JobExperienceTimeline() {
             <TimelineItem
               active={activeExperience.id === exp.id}
               onClick={() => setActiveExperience(exp)}
+              data-testid={`timeline-item-${exp.id}`}
             >
-              <MobileTimelineMarker active={activeExperience.id === exp.id} />
+              <MobileTimelineMarker
+                active={activeExperience.id === exp.id}
+                data-testid={`timeline-marker-${exp.id}`}
+              />
 
-              <TimelineContent>
-                <Duration>{exp.duration}</Duration>
-                <CompanyName>{exp.company}</CompanyName>
+              <TimelineContent data-testid={`timeline-content-${exp.id}`}>
+                <Duration data-testid={`duration-${exp.id}`}>
+                  {exp.duration}
+                </Duration>
+                <CompanyName data-testid={`company-${exp.id}`}>
+                  {exp.company}
+                </CompanyName>
               </TimelineContent>
             </TimelineItem>
 
@@ -204,13 +171,15 @@ export default function JobExperienceTimeline() {
         ))}
       </TimelineContentSection>
 
-      <DesktopExperienceDetails>
+      <DesktopExperienceDetails data-testid="desktop-experience-details">
         <Box>
-          <JobTitle variant="h4">{activeExperience.title}</JobTitle>
-          <DetailCompanyName variant="h5">
+          <JobTitle variant="h4" data-testid="desktop-job-title">
+            {activeExperience.title}
+          </JobTitle>
+          <DetailCompanyName variant="h5" data-testid="desktop-company">
             {activeExperience.company}
           </DetailCompanyName>
-          <DetailDuration>
+          <DetailDuration data-testid="desktop-duration">
             {activeExperience.duration} • {activeExperience.location}
           </DetailDuration>
         </Box>

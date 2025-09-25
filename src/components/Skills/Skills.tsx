@@ -28,11 +28,16 @@ export default function Skills() {
       {skillsData.map((skill: Skill) => {
         return (
           <React.Fragment key={skill.id}>
-            <Typography variant="h3" gutterBottom sx={{ mt: 6 }}>
+            <Typography
+              variant="h3"
+              gutterBottom
+              sx={{ mt: 6 }}
+              data-testid={`skills-section-title-${skill.id}`}
+            >
               {skill.title}
             </Typography>
 
-            <SkillCategoriesGrid>
+            <SkillCategoriesGrid data-testid={`skills-grid-${skill.id}`}>
               {skill.categories.map((category: SkillCategory) => (
                 <SkillCategoryItem
                   key={category.title}

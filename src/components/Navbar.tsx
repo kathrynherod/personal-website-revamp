@@ -168,6 +168,7 @@ export default function Navbar({ activeSection, onNavigate }: NavbarProps) {
               <NavButton
                 onClick={() => handleNavClick(page.id)}
                 $isActive={activeSection === page.id}
+                data-testid={`nav-${page.id}`}
               >
                 {page.display}
               </NavButton>

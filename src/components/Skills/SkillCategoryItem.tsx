@@ -1,9 +1,10 @@
+import { INTERSECTION_OBSERVER_CONFIG } from "@constants/intersectionObserver";
+import { useIntersectionObserver } from "@hooks/useIntersectionObserver";
 import { Box, styled, Typography } from "@mui/material";
+import { generatePrefixedTestId } from "@test/test-id-utils";
+import type { SkillCategory } from "@types";
 import { useRef } from "react";
 
-import { INTERSECTION_OBSERVER_CONFIG } from "../../constants/intersectionObserver";
-import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
-import type { SkillCategory } from "../../types/ResumeDataType";
 import { AnimatedBox } from "../shared/AnimatedBox";
 import SkillChip from "./SkillChip";
 
@@ -26,9 +27,18 @@ export default function SkillCategoryItem({ title, skills }: SkillCategory) {
   const isVisible = useIntersectionObserver(ref, INTERSECTION_OBSERVER_CONFIG);
 
   return (
-    <SkillCategoryCard ref={ref} isVisible={isVisible}>
-      <CategoryTitle variant="h4">{title}</CategoryTitle>
-      <SkillChipsContainer>
+    <SkillCategoryCard
+      ref={ref}
+      isVisible={isVisible}
+      data-testid={generatePrefixedTestId("skill-category", title)}
+    >
+      <CategoryTitle
+        variant="h4"
+        data-testid={generatePrefixedTestId("category-title", title)}
+      >
+        {title}
+      </CategoryTitle>
+      <SkillChipsContainer data-testid={generatePrefixedTestId("skills-container", title)}>
         {skills.map((skill, index) => (
           <SkillChip
             key={skill}

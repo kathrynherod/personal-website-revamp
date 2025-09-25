@@ -56,13 +56,17 @@ export default function PhotoItem({
       style={{
         transitionDelay: `${baseDelay + index * 0.1}s`,
       }}
+      data-testid={`photo-item-${index}`}
     >
       <PhotoImage
         src={photo.src}
         alt={photo.caption}
         onClick={() => onPhotoClick(photo)}
+        data-testid={`photo-image-${index}`}
       />
-      <PhotoCaption variant="caption">{photo.caption}</PhotoCaption>
+      <PhotoCaption variant="caption" data-testid={`photo-caption-${index}`}>
+        {photo.caption}
+      </PhotoCaption>
     </PhotoContainer>
   );
 }

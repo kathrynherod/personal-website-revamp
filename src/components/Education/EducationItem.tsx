@@ -29,10 +29,23 @@ export default function EducationItem({ edu }: { edu: Education }) {
   const isVisible = useIntersectionObserver(ref, INTERSECTION_OBSERVER_CONFIG);
 
   return (
-    <EducationCard ref={ref} isVisible={isVisible}>
-      <InstitutionName variant="h4">{edu.institution}</InstitutionName>
-      <DegreeTitle>{edu.degree}</DegreeTitle>
-      <EducationYear>{edu.year}</EducationYear>
+    <EducationCard
+      ref={ref}
+      isVisible={isVisible}
+      data-testid={`education-item-${edu.id}`}
+    >
+      <InstitutionName
+        variant="h4"
+        data-testid={`education-institution-${edu.id}`}
+      >
+        {edu.institution}
+      </InstitutionName>
+      <DegreeTitle data-testid={`education-degree-${edu.id}`}>
+        {edu.degree}
+      </DegreeTitle>
+      <EducationYear data-testid={`education-year-${edu.id}`}>
+        {edu.year}
+      </EducationYear>
     </EducationCard>
   );
 }

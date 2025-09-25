@@ -8,6 +8,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Build**: `npm run build` - TypeScript compilation followed by Vite build
 - **Lint**: `npm run lint` - Run ESLint on the codebase
 - **Preview**: `npm run preview` - Preview production build locally
+- **Test**: `npm test` - Run tests in watch mode
+- **Test (run once)**: `npm run test:run` - Run all tests once
+- **Test with UI**: `npm run test:ui` - Run tests with Vitest UI
+- **Test coverage**: `npm run test:coverage` - Run tests with coverage report
 
 ## Architecture
 

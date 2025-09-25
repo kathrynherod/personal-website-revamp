@@ -1,8 +1,7 @@
+import KathrynAndOlive from "@assets/images/kathryn-and-olive.png";
+import QuoteBlock from "@components/QuoteBlock";
 import { Box, Paper, styled, Typography, useMediaQuery } from "@mui/material";
-
-import KathrynAndOlive from "../assets/images/kathryn-and-olive.png";
-import Layout from "../components/Layout";
-import QuoteBlock from "../components/QuoteBlock";
+import Layout from "@shared/Layout";
 
 const ContentGrid = styled(Box)`
   align-items: start;

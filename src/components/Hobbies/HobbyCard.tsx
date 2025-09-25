@@ -124,16 +124,16 @@ export default function HobbyItem({
         style={{
           transitionDelay: `${index * 0.1}s`,
         }}
+        data-testid={`hobby-header-${index}`}
       >
         {hobby.icon}
-        <HobbyTitle variant="h5" component="h3">
+        <HobbyTitle variant="h5" component="h3" data-testid={`hobby-title-${index}`}>
           {hobby.title}
         </HobbyTitle>
       </HobbyHeader>
 
       <Box
         id={`hobby-content-${hobby.title.replace(/\s+/g, "-").toLowerCase()}`}
-        role="region"
         aria-labelledby={`hobby-title-${hobby.title.replace(/\s+/g, "-").toLowerCase()}`}
       >
         {hobby.description
@@ -165,6 +165,7 @@ export default function HobbyItem({
             startIcon={<ExpandMoreIcon />}
             variant="text"
             color="primary"
+            data-testid={`expand-button-${index}`}
           >
             Continue reading about {hobby.title.toLowerCase()}
           </ExpandButton>
@@ -178,6 +179,7 @@ export default function HobbyItem({
             startIcon={<ExpandLessIcon />}
             variant="text"
             color="primary"
+            data-testid={`collapse-button-${index}`}
           >
             Show less
           </ExpandButton>
@@ -185,7 +187,7 @@ export default function HobbyItem({
       </Box>
 
       {hobby.photos && (
-        <PhotoGallery>
+        <PhotoGallery data-testid={`photo-gallery-${index}`}>
           {hobby.photos.map((photo, photoIndex) => (
             <PhotoItem
               key={photoIndex}

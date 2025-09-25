@@ -1,4 +1,5 @@
 import { Chip, styled } from "@mui/material";
+import { generatePrefixedTestId } from "@test/test-id-utils";
 
 const StyledChip = styled(Chip)`
   background-color: ${({ theme }) => theme.palette.primary.light}20;
@@ -72,6 +73,7 @@ export default function SkillChip({ skill, index, isVisible }: SkillChipProps) {
         animationDelay: `${index * 0.1}s`,
       }}
       variant="outlined"
+      data-testid={generatePrefixedTestId("skill-chip", skill)}
     />
   );
 }

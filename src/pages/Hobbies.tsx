@@ -1,16 +1,15 @@
+import FosterDogs from "@assets/images/foster-dogs.png";
+import MontessoriShelf from "@assets/images/montessori-shelf.png";
+import MurphyBed from "@assets/images/murphy-bed.png";
+import OliveByPool from "@assets/images/olive-by-pool.png";
+import PortiaByPool from "@assets/images/portia-by-pool.png";
+import HobbyItem from "@components/Hobbies/HobbyCard";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import PetsIcon from "@mui/icons-material/Pets";
 import SquareFootIcon from "@mui/icons-material/SquareFoot";
 import { Stack } from "@mui/material";
-
-import FosterDogs from "../assets/images/foster-dogs.png";
-import MontessoriShelf from "../assets/images/montessori-shelf.png";
-import MurphyBed from "../assets/images/murphy-bed.png";
-import OliveByPool from "../assets/images/olive-by-pool.png";
-import PortiaByPool from "../assets/images/portia-by-pool.png";
-import HobbyItem from "../components/Hobbies/HobbyCard";
-import Layout from "../components/Layout";
-import type { Hobby } from "../types/HobbiesTypes";
+import Layout from "@shared/Layout";
+import type { Hobby } from "@types";
 
 const hobbies: Hobby[] = [
   {

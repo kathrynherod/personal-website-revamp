@@ -46,12 +46,18 @@ export default function PhotoDialog({
   onClose,
 }: PhotoDialogProps) {
   return (
-    <StyledDialog open={open} onClose={onClose} maxWidth={false} fullWidth>
-      <DialogContentContainer>
-        <CloseButton onClick={onClose}>
+    <StyledDialog open={open} onClose={onClose} maxWidth={false} fullWidth data-testid="photo-dialog">
+      <DialogContentContainer data-testid="dialog-content">
+        <CloseButton onClick={onClose} data-testid="close-button">
           <CloseIcon />
         </CloseButton>
-        {photo && <FullSizeImage src={photo.src} alt={photo.caption} />}
+        {photo && (
+          <FullSizeImage
+            src={photo.src}
+            alt={photo.caption}
+            data-testid="dialog-image"
+          />
+        )}
       </DialogContentContainer>
     </StyledDialog>
   );

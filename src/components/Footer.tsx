@@ -47,19 +47,20 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <FooterContainer component="footer">
-      <FooterContent>
-        <FooterText variant="body2">
+    <FooterContainer component="footer" data-testid="footer">
+      <FooterContent data-testid="footer-content">
+        <FooterText variant="body2" data-testid="footer-text">
           © {currentYear} Kathryn Herod. Built with React & TypeScript.
         </FooterText>
 
-        <SocialLinks>
+        <SocialLinks data-testid="social-links">
           <SocialIconButton
             component="a"
             href="https://linkedin.com/in/kathrynherod"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
+            data-testid="linkedin-link"
           >
             <LinkedInIcon />
           </SocialIconButton>
@@ -70,6 +71,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
+            data-testid="github-link"
           >
             <GitHubIcon />
           </SocialIconButton>
@@ -80,6 +82,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Send Email"
+            data-testid="email-link"
           >
             <EmailIcon />
           </SocialIconButton>

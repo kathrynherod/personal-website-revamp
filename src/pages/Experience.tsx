@@ -1,7 +1,7 @@
-import Education from "../components/Education/Education";
-import JobExperienceTimeline from "../components/JobExperienceTimeline";
-import Layout from "../components/Layout";
-import Skills from "../components/Skills/Skills";
+import Education from "@components/Education/Education";
+import JobExperienceTimeline from "@components/JobExperienceTimeline";
+import Skills from "@components/Skills/Skills";
+import Layout from "@shared/Layout";
 
 export default function Experience() {
   return (

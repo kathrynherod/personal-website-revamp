@@ -21,11 +21,11 @@ const EducationList = styled(Box)`
 export default function Education() {
   return (
     <>
-      <Typography variant="h3" gutterBottom sx={{ mt: 6 }}>
+      <Typography variant="h3" gutterBottom sx={{ mt: 6 }} data-testid="education-title">
         Education & Certifications
       </Typography>
 
-      <EducationList>
+      <EducationList data-testid="education-list">
         {educationData.map((edu, index) => (
           <EducationItem key={index} edu={edu} />
         ))}

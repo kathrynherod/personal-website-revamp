@@ -19,6 +19,7 @@ export default function ThemeToggle() {
       onClick={() => toggleMode()}
       aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
       title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      data-testid="theme-toggle-button"
     >
       {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
     </StyledIconButton>

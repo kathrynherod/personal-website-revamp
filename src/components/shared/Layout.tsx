@@ -30,10 +30,12 @@ export default function Layout({
   sectionTitle: string;
 }) {
   return (
-    <PageContainer id={id}>
-      <SectionWrapper>
-        <SectionTile variant="h2">{sectionTitle}</SectionTile>
-        {children}
+    <PageContainer id={id} data-testid={`section-${id}`}>
+      <SectionWrapper data-testid="section-wrapper">
+        <SectionTile variant="h2" data-testid="section-title">
+          {sectionTitle}
+        </SectionTile>
+        <div data-testid="section-content">{children}</div>
       </SectionWrapper>
     </PageContainer>
   );
